@@ -25,10 +25,6 @@ public:
 		name = data;
 	}
 	
-	void printData(int i){
-		// Your code
-	}
-	
 private:
 	string number;
 	string name;		
