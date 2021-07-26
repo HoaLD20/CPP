@@ -68,9 +68,13 @@ int main(int argc, char **argv)
 		case 0:
 			//system("cls");
 			printf("\033c");
-			WriteOnFile(); //Ghi du lieu len file
+			// WriteOnFile(); //Ghi du lieu len file
 			cout << "\n\n\t\t--- CHAO TAM BIET ---\n\n";
-			system("pause");
+			//system("pause");
+			cout << endl
+				 << "Press Enter to continue...";
+			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cin.get();
 			return 0;
 		}
 	} while (true);
@@ -110,7 +114,7 @@ void NhapThongTinCaiDat()
 
 	do
 	{
-		//system("cls");
+		// system("cls");
 		printf("\033c");
 		cout << "--- MOI BAN LUA CHON ---\n";
 		cout << "1-Nhap thong tin Display\n";
@@ -135,18 +139,21 @@ void NhapThongTinCaiDat()
 	{
 		cout << " --- Ban nhap thong tin Display --- " << endl;
 		NhapThongTinCaiDat_Display();
+		WriteOnFile(); //Ghi du lieu len file
 		break;
 	}
 	case 2:
 	{
 		cout << " --- Ban nhap thong tin Sound --- " << endl;
 		NhapThongTinCaiDat_Sound();
+		WriteOnFile(); //Ghi du lieu len file
 		break;
 	}
 	case 3:
 	{
 		cout << " --- Ban nhap thong tin General --- " << endl;
 		NhapThongTinCaiDat_General();
+		WriteOnFile(); //Ghi du lieu len file
 		break;
 	}
 	case 0:
@@ -560,7 +567,11 @@ void XuatThongTinCaiDat_Sound()
 		sound.get(i)->xuatThongTin();
 	}
 	cout << endl;
-	system("pause");
+	//system("pause");
+	cout << endl
+		 << "Press Enter to continue...";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.get();
 }
 
 void XuatThongTinCaiDat_General()
@@ -572,7 +583,11 @@ void XuatThongTinCaiDat_General()
 		general.get(i)->xuatThongTin();
 	}
 	cout << endl;
-	system("pause");
+	//system("pause");
+	cout << endl
+		 << "Press Enter to continue...";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.get();
 }
 
 void XuatThongTinCaiDat_Display()
@@ -584,7 +599,11 @@ void XuatThongTinCaiDat_Display()
 		display.get(i)->xuatThongTin();
 	}
 	cout << endl;
-	system("pause");
+	//system("pause");
+	cout << endl
+		 << "Press Enter to continue...";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	cin.get();
 }
 
 //true: ton tai ma so ca nhan,  false: khong ton tai ma so ca nhan
@@ -737,7 +756,11 @@ void XuatThongTinTatCaCaiDat()
 	}
 
 	cout << endl;
-	system("pause");
+	//system("pause");
+	cout << endl
+		 << "Press Enter to continue...";
+	cin.ignore(numeric_limits<streamsize>::max(), '\n');
+	// cin.get();
 }
 
 //Loai bo khoang trang trong chuoi
@@ -974,7 +997,7 @@ void ReadFromFile()
 	{
 		cout << ch << endl;
 		cout << "\t\t\t\t--- CHAO TAM BIET ---\n\n";
-		system("pause");
+		//system("pause");
 		exit(0);
 	}
 }
