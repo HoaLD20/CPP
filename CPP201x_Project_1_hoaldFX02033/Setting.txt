@@ -1,4 +1,1 @@
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa,aaaaaaaaa@gmail.com,11111111,500,500; General:1,1;Sound:1,1,1,1;Display:2,2,2
-bbbbbbbbbbbbbbbbbbbbbbbbbb,bbbbbbbbbbbbb@gmail.com,22222222,1111,1111; General:1,1
-a,aaaaa@gmail.com,99999999,2,2; General:30,28
-1,cccdc@ggg.cm,55555555,55555,55555; General:20,25;Sound:1,1,1,1;Display:1,1,1
+test1,test@gmail.com,11111111,20,20; General:(GMT+12:00)    Fiji, Kamchatka, Marshall Is.,25   Thai;Sound:1,1,1,1;Display:1,1,1

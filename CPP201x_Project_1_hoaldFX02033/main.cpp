@@ -34,10 +34,11 @@ void WriteOnFile();	 //Ham ghi du lieu len file
 
 int menu();
 
-string WhiteSpaceDelete(string &);												  //Loai bo khoang trang trong chuoi
-void CheckDigit(string &);														  //Kiem tra dau vao co phai so nguyen khong
-void DuplicationOfInfo(List<Setting *>);										  //Kiem tra trung lap thong tin
-int ChonTimeZoneVaLanguage(vector<CommonInfo>);									  //Liet ke ra danh sach TimeZone va Language
+string WhiteSpaceDelete(string &);		 //Loai bo khoang trang trong chuoi
+void CheckDigit(string &);				 //Kiem tra dau vao co phai so nguyen khong
+void DuplicationOfInfo(List<Setting *>); //Kiem tra trung lap thong tin
+int ChonTimeZoneVaLanguage(vector<CommonInfo>);
+string GetTimeZoneAndLanguage(vector<CommonInfo>, int index);						  //Liet ke ra danh sach TimeZone va Language
 int isDigits(int);																  //Kiem tra so nhap vao dung khong, trong phan chon TimeZone va Language
 int PositionOfTheSamePersonalKey(List<Setting *>, const string &);				  //Tim kiem vi tri phan tu co cung MSCN
 bool KiemTraMSCNHoacTen(List<Setting *>, int size, string, int &, string);		  //Kiem tra MSCN hoac ten
@@ -50,6 +51,13 @@ int main(int argc, char **argv)
 	ReadFromFile(); //Doc du lieu tu file
 	downloadLanguage();
 	downloadTimeZone();
+
+	// GetTimeZoneAndLanguage(timezoneList, 5);
+	// GetTimeZoneAndLanguage(languageList, 5);
+
+	// ReadFromFile(); //Doc du lieu tu file
+	// downloadLanguage();
+	// downloadTimeZone();
 
 	int selection = 0;
 
@@ -311,6 +319,29 @@ int isDigits(int maxSelection)
 	} while (true);
 }
 
+/**
+ * 
+ * 
+ */
+
+string GetTimeZoneAndLanguage(vector<CommonInfo> list, int index)
+{
+	string data = "";
+	for (size_t i = 0; i < list.size(); ++i)
+	{
+		if (i == index)
+		{
+			//setw(2) << i << ":" << setw(16) <<
+			//data = list[i].getNumber() + setiosflags(ios::left) + list[i].getName() + resetiosflags(ios::left) << endl; //Dinh dang thong tin xuat
+			data = list[i].getNumber() + ' ' + list[i].getName(); //Dinh dang thong tin xuat
+			
+			break;
+		}
+	}
+
+	return data;
+}
+
 //Liet ke ra danh sach TimeZone va Language
 //Mang list: mang TimeZone hoac Language
 int ChonTimeZoneVaLanguage(vector<CommonInfo> list)
@@ -332,22 +363,22 @@ void NhapThongTinCaiDat_General()
 	do
 	{
 		cout << " NHAP THONG TIN GENERAL, XE SO " << general.size() + 1 << endl;
-
-		General gen;		//Bien de luu thong tin doi tuong General dang nhap
-		Setting *p;			//Con tro tro den vung nho co gia tri giong voi bien 'gen'
-		gen.nhapThongTin(); //Nhap thong tin chung
-		bool found = false; //true: tai khoan ton tai,  false: tai khoan khong ton tai
-
+		General gen;							   //Bien de luu thong tin doi tuong General dang nhap
+		Setting *p;								   //Con tro tro den vung nho co gia tri giong voi bien 'gen'
+		gen.nhapThongTin();						   //Nhap thong tin chung
+		bool found = false;						   //true: tai khoan ton tai,  false: tai khoan khong ton tai
 		ThayDoiCaiDatChungVaKhoiTaoDuLieu(gen, 3); //3: Doi tuong thuoc lop General
-
 		cout << "\nMOI BAN CHON TIME ZONE\n";
 		selection = ChonTimeZoneVaLanguage(timezoneList); //Lua chon timeZone
-		gen.set_timeZone(to_string(selection));			  //Nhap gia tri timeZone cho doi tuong
-
+		
+		// gen.set_timeZone(to_string(GetTimeZoneAndLanguage(timezoneList, selection)));			  //Nhap gia tri timeZone cho doi tuong
+		gen.set_timeZone(GetTimeZoneAndLanguage(timezoneList, selection));			  //Nhap gia tri timeZone cho doi tuong
+		
 		cout << "\nMOI BAN CHON LANGUAGE\n";
 		selection = ChonTimeZoneVaLanguage(languageList); //Lua chon language
-		gen.set_language(to_string(selection));			  //Nhap gia tri language cho doi tuong
-
+		
+		gen.set_language(GetTimeZoneAndLanguage(languageList, selection));			  //Nhap gia tri language cho doi tuong
+		
 		//Tim MSCN trung khop voi MSCN vua nhap
 		for (int i = 0; i < general.size(); ++i)
 		{
@@ -364,9 +395,7 @@ void NhapThongTinCaiDat_General()
 			p = new General(gen); //Cap phat vung nho co gia tri bang voi 'gen'
 			general.add(p);		  //Them p vao mang elements_ cua list general
 		}
-
 		general.Sap_Xep(); //Sap xep mang elements_ cua list "general" theo thu tu tang dan MSCN
-
 		cout << "TIEP TUC XE SO " << general.size() + 1 << " ? (y/n): ";
 		cin >> continues;
 		cout << endl;
