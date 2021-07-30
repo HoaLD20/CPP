@@ -1,0 +1,4 @@
+hoa2,hoa2@gmail.cm,11111111,500,500; General:1,1;Sound:1,1,1,1;Display:1,1,1
+hoa3,hoa3@gmail.com,22222222,50,50; General:1,1;Sound:2,2,2,2;Display:1,1,1
+hoa,hoa@gmail.com,22233333,20,20; General:(GMT-07:00)    Chihuahua, La Paz, Mazatlan - New,6   Portuguese;Sound:1,1,1,1;Display:1,1,1
+hoa,hoa@gmai.com,66666666,60,60; General:(GMT-06:00)    Guadalajara, Mexico City, Monterrey - New,7   Bengali;Sound:1,1,1,1;Display:1,1,1

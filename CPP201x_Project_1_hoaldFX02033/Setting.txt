@@ -1,1 +1,0 @@
-test1,test@gmail.com,11111111,20,20; General:(GMT+12:00)    Fiji, Kamchatka, Marshall Is.,25   Thai;Sound:1,1,1,1;Display:1,1,1

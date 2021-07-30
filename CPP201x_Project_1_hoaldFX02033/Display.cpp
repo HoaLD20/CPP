@@ -1,135 +1,93 @@
-#include "Display.h"
+﻿#include "Display.h"
+#include "CheckValid.h"
 
-Display::Display() : Setting()
-{
+//contructor khong co tham so
+Display::Display()
+{	
 	light_level = 0;
 	screen_light_level = 0;
 	taplo_light_level = 0;
+	setPersonalKey(arr_settings[settingCnt].getPersonalKey());
 }
 
-Display::Display(const Display &u) : Setting(u)
-{
-	light_level = u.light_level;
-	screen_light_level = u.screen_light_level;
-	taplo_light_level = u.taplo_light_level;
+//contructor co tham so
+Display::Display(int light_lv, int screen_light_lv, int taplo_light_lv, string carName, string personalKey,
+	string email_, int odo_, int serviceRemind) {
+
+	this->car_name = carName;
+	this->personal_key = personalKey;
+	this->email = email_;
+	this->odo = odo_;
+	this->service_remind = serviceRemind;
+	this->light_level = light_lv;
+	this->screen_light_level = screen_light_lv;
+	this->taplo_light_level = taplo_light_lv;
 }
 
+//ham huy
 Display::~Display() {}
 
-int Display::get_light_level()
-{
-	return light_level;
+int Display::get_light_level() {
+	return this->light_level;
 }
 
-int Display::get_screen_light_level()
-{
-	return screen_light_level;
+int Display::get_screen_light_level() {
+	return this->screen_light_level;
 }
 
-int Display::get_taplo_light_level()
-{
-	return taplo_light_level;
+int Display::get_taplo_light_level() {
+	return this->taplo_light_level;
 }
 
-void Display::set_light_level(int data)
-{
-	light_level = data;
+void Display::set_light_level(int data) {
+	this->light_level = data;
 }
 
-void Display::set_screen_light_level(int data)
-{
-	screen_light_level = data;
+void Display::set_screen_light_level(int data) {
+	this->screen_light_level = data;
 }
 
-void Display::set_taplo_light_level(int data)
-{
-	taplo_light_level = data;
+void Display::set_taplo_light_level(int data) {
+	this->taplo_light_level = data;
 }
 
-string Display::layMaSoCaNhan()
-{
-	return getPersonalKey();
+
+/// nhap thong tin cho Display, va tra ve cac gia tri cua light, screen light, taplo da nhan la lay
+///  tu lop ke thua Setting qua nhung property cua lop cha
+Display Display::nhapThongTin(Setting setting) {
+
+	cout << "Light level: ";
+	this->light_level = validInput("Light level");
+	cout << "Screen light level: ";
+	this->screen_light_level = validInput("Screen light level");
+	cout << "Taplo light level: ";
+	this->taplo_light_level = validInput("Taplo light level");
+
+	return Display(this->light_level, this->screen_light_level, this->taplo_light_level,
+		setting.getCarName(), setting.getPersonalKey(), setting.getEmail(), setting.getODO(), setting.getServiceRemind());
 }
 
-string Display::layTenChuXe()
-{
-	return getCarName();
-}
+//xuat thong tin cau Display
+void Display::xuatThongTin(Setting arr_settings[], Display arr_displays[], int settingCnt) {
+	cout << setw(30) << left << "Owner name"
+		<< setw(35) << left << "Email"
+		<< setw(15) << left << "Key number"
+		<< setw(15) << left << "ODO number"
+		<< setw(25) << left << "Remind Service (km)"
+		<< setw(15) << left << "Light level"
+		<< setw(20) << left << "Screen light level"
+		<< setw(15) << left << "Taplo level" << endl;
 
-string Display::layEmail()
-{
-	return getEmail();
-}
-
-int Display::layOdo()
-{
-	return getODO();
-}
-
-int Display::layServiceRemind()
-{
-	return getServiceRemind();
-}
-
-void Display::xuatThongTinRieng()
-{
-	cout << setiosflags(ios::left) << setw(23) << "LIGHT LEVEL" << setw(2) << ":" << get_light_level() << resetiosflags(ios::left) << endl;
-	cout << setiosflags(ios::left) << setw(23) << "SCREEN LIGHT LEVEL" << setw(2) << ":" << get_screen_light_level() << resetiosflags(ios::left) << endl;
-	cout << setiosflags(ios::left) << setw(23) << "TAPLO LIGHT LEVEL" << setw(2) << ":" << get_taplo_light_level() << resetiosflags(ios::left) << endl;
-}
-
-void Display::set_car_name(string data)
-{
-	setCarName(data);
-}
-
-void Display::set_personal_key(string data)
-{
-	setPersonalKey(data);
-}
-
-void Display::set_email(string data)
-{
-	setEmail(data);
-}
-
-void Display::set_odo(int data)
-{
-	setOdo(data);
-}
-
-void Display::set_service_remind(int data)
-{
-	setServiceRemind(data);
-}
-
-string *Display::layThongTinRieng(string *array)
-{
-	array = new string[3];
-	array[0] = to_string(get_light_level());
-	array[1] = to_string(get_screen_light_level());
-	array[2] = to_string(get_taplo_light_level());
-	return array;
-}
-
-void Display::thayDoiThongTinRieng(int number)
-{
-	set_light_level(number);
-	set_screen_light_level(number);
-	set_taplo_light_level(number);
-}
-
-void Display::nhapThongTin()
-{
-	Setting::nhapThongTin();
-	set_light_level(checkLevel("LIGHT LEVEL: "));
-	set_screen_light_level(checkLevel("SCREEN LIGHT LEVEL: "));
-	set_taplo_light_level(checkLevel("TAPLO LIGHT LEVEL: "));
-}
-
-void Display::xuatThongTin()
-{
-	Setting::xuatThongTin();
-	// set space when out put
-	cout << setw(10) << get_light_level() << setw(10) << get_screen_light_level() << setw(10) << get_taplo_light_level() << endl;
+	//left: đặt feild điều chỉnh sang trái
+	//in ra tung thong tin cua Display trog arr
+	for (int i = 0; i < settingCnt; i++) {
+		cout << setw(30) << left << arr_settings[i].getCarName()
+			<< setw(35) << left << arr_settings[i].getEmail()
+			<< setw(15) << left << arr_settings[i].getPersonalKey()
+			<< setw(15) << left << arr_settings[i].getODO()
+			<< setw(25) << left << arr_settings[i].getServiceRemind()
+			<< setw(15) << left << arr_displays[i].get_light_level()
+			<< setw(20) << left << arr_displays[i].get_screen_light_level()
+			<< setw(15) << left << arr_displays[i].get_taplo_light_level() << endl;
+	}
 }

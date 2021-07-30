@@ -7,13 +7,16 @@
 #include <string>
 using namespace std;
 
+extern Setting arr_settings[100];//tao mang setting su dung cho toan bai
+extern int settingCnt;//tao index cua mang setting su dung cho toan bai
+
 class Sound : public Setting {
 public:
 	Sound();
-	Sound(const Sound& u);
+	Sound(int, int, int, int, string, string, string, int, int);
 	~Sound();
-	void nhapThongTin();
-	void xuatThongTin();
+	Sound nhapThongTin(Setting);
+	void xuatThongTin(Setting arr_settings[], Sound arr_sounds[], int settingCnt);
 	int get_media_level();
 	int get_call_level();
 	int get_navi_level();
@@ -22,24 +25,11 @@ public:
 	void set_call_level(int data);
 	void set_navi_level(int data);
 	void set_notification_level(int data);
-	string layMaSoCaNhan();
-	string layTenChuXe();
-	string layEmail();
-	int layOdo();
-	int layServiceRemind();
-	void xuatThongTinRieng();	//Xuat thong tin cua lop Sound
-	void set_car_name(string data);
-	void set_personal_key(string data);
-	void set_email(string data);
-	void set_odo(int data);
-	void set_service_remind(int data);
-	string* layThongTinRieng(string* array); //Lay thong tin rieng cua lop con ke thua
-	void thayDoiThongTinRieng(int number);	//Thay doi thong tin rieng cua lop
-private:
+protected:
 	int media_level;
 	int call_level;
 	int navi_level;
 	int notification_level;
 };
-
 #endif // SOUND_H_
+

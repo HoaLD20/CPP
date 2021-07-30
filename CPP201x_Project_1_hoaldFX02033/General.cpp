@@ -1,111 +1,84 @@
 #include "General.h"
-#include "CommonInfo.h"
 
-General::General():Setting()
+
+// Constructor
+General::General(string language, string timeZone)
 {
-	timeZone = "";
-	language = "";
+	set_timeZone(timeZone);
+	set_language(language);
 }
 
-General::General(const General& u):Setting(u)
+// Constructor
+General::General(string personalKey, string timeZone, string language)
 {
-	timeZone = u.timeZone;
-	language = u.language;
+	personal_key = personalKey;
+	set_timeZone(timeZone);
+	set_language(language);
 }
 
-General::~General(){}
-
-void General::nhapThongTin(){
-	Setting::nhapThongTin();
+// Constructor with parameter
+General::General(string carName, string personalKey, string e_mail, int myodo, int remind, string timezone, string language) {
+	this->car_name = carName;
+	this->personal_key = personalKey;
+	this->email = e_mail;
+	this->odo = myodo;
+	this->service_remind = remind;
+	this->timeZone = timezone;
+	this->language = language;
 }
 
-void General::xuatThongTin(){
-	Setting::xuatThongTin();
-	cout << setw(15) << get_timeZone() << setw(15) << get_language() << endl;
-}
-
-string General::get_language(){
-	return language;
-}
-
-string General::get_timeZone(){
-	return timeZone;
-}
-
-void General::set_timeZone(string data){
-	timeZone = data;
-}
-
-void General::set_language(string data){
-	language = data;
-}
-
-string General::layMaSoCaNhan()
+General::General()
 {
-	return getPersonalKey();
+	timeZone = "GMT+07:00";
+	language = " Vietnamese";
+	setPersonalKey(arr_settings[settingCnt].getPersonalKey());
 }
 
-string General::layTenChuXe()
-{
-	return getCarName();
+General::~General() {}
+
+//nhap thong tin cho General
+General General::nhapThongTin(Setting setting, string timeZone, string language) {
+
+	return General(setting.getCarName(), setting.getPersonalKey(), setting.getEmail(), setting.getODO(),
+		setting.getServiceRemind(), timeZone, language);
 }
 
-string General::layEmail()
-{
-	return getEmail();
+//xuat thong tin cho General
+void General::xuatThongTin(Setting arr_settings[], General arr_generals[], int settingCnt) {
+	cout << setw(30) << left << "Owner name"
+		<< setw(35) << left << "Email"
+		<< setw(15) << left << "Key number"
+		<< setw(15) << left << "ODO number"
+		<< setw(25) << left << "Remind Service (km)"
+		<< setw(20) << left << "TimeZone"
+		<< setw(50) << left << "Language" << endl;
+
+	//in ra tung thong tin cua General trog arr
+	for (int i = 0; i < settingCnt; i++) {
+
+		cout << setw(30) << left << arr_settings[i].getCarName()
+			<< setw(35) << left << arr_settings[i].getEmail()
+			<< setw(15) << left << arr_settings[i].getPersonalKey()
+			<< setw(15) << left << arr_settings[i].getODO()
+			<< setw(25) << left << arr_settings[i].getServiceRemind()
+			<< setw(20) << left << arr_generals[i].get_timeZone()
+			<< setw(50) << left << arr_generals[i].get_language() << endl;
+	}
 }
 
-int General::layOdo()
-{
-	return getODO();
+
+string General::get_language() {
+	return this->language;
 }
 
-int General::layServiceRemind()
-{
-	return getServiceRemind();
+string General::get_timeZone() {
+	return this->timeZone;
 }
 
-void General::xuatThongTinRieng()
-{
-	cout << setiosflags(ios::left) << setw(23) << "TIME ZONE" << setw(2) << ":" << get_timeZone() << resetiosflags(ios::left) << endl;
-	cout << setiosflags(ios::left) << setw(23) << "LANGUAGE" << setw(2) << ":" << get_language() << resetiosflags(ios::left) << endl;
+void General::set_timeZone(string data) {
+	this->timeZone = data;
 }
 
-void General::set_car_name(string data)
-{
-	setCarName(data);
-}
-
-void General::set_personal_key(string data)
-{
-	setPersonalKey(data);
-}
-
-void General::set_email(string data)
-{
-	setEmail(data);
-}
-
-void General::set_odo(int data)
-{
-	setOdo(data);
-}
-
-void General::set_service_remind(int data)
-{
-	setServiceRemind(data);
-}
-
-string* General::layThongTinRieng(string* array)
-{
-	array = new string[2];
-	array[0] = get_timeZone();
-	array[1] = get_language();
-	return array;
-}
-
-void General::thayDoiThongTinRieng(int number)
-{
-	set_timeZone(to_string(number));
-	set_language(to_string(number));
+void General::set_language(string data) {
+	this->language = data;
 }

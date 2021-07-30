@@ -1,140 +1,103 @@
 #include "Sound.h"
+#include "CheckValid.h"
 
-Sound::Sound(): Setting(){
+//contructor
+Sound::Sound() : Setting() {
 	media_level = 0;
 	call_level = 0;
 	navi_level = 0;
 	notification_level = 0;
+	setPersonalKey(arr_settings[settingCnt].getPersonalKey());
 }
 
-Sound::Sound(const Sound& u):Setting(u)
-{
-	media_level = u.media_level;
-	call_level = u.call_level;
-	navi_level = u.navi_level;
-	notification_level = u.notification_level;
+//contructor co tham so
+Sound::Sound(int media_lv, int call_lv, int navi_lv, int notification_lv, string carName, string personalKey,
+	string email_, int odo_, int serviceRemind) : Setting() {
+
+	this->car_name = carName;
+	this->personal_key = personalKey;
+	this->email = email_;
+	this->odo = odo_;
+	this->service_remind = serviceRemind;
+	this->media_level = media_lv;
+	this->call_level = call_lv;
+	this->navi_level = navi_lv;
+	this->notification_level = notification_lv;
 }
 
-Sound::~Sound(){}
+//ham huy
+Sound::~Sound() {}
 
-void Sound::nhapThongTin(){
-	Setting::nhapThongTin();
-	set_media_level(checkLevel("MEDIA LEVEL: "));
-	set_call_level(checkLevel("CALL LEVEL: "));
-	set_navi_level(checkLevel("NAVIGATION LEVEL: "));
-	set_notification_level(checkLevel("NOTIFICATION LEVEL: "));
+//nhap thong tin cho Sound
+Sound Sound::nhapThongTin(Setting setting) {
+	cout << "Media volume level: ";
+	this->media_level = validInput("Media volume level");
+	cout << "Call volume level: ";
+	this->call_level = validInput("Call volume level");
+	cout << "Navigation volume level: ";
+	this->navi_level = validInput("Navigation volume level");
+	cout << "Notification volume level: ";
+	this->notification_level = validInput("Notification volume level");
+	return Sound(this->media_level, this->call_level, this->navi_level, this->notification_level,
+		setting.getCarName(), setting.getPersonalKey(), setting.getEmail(), setting.getODO(), setting.getServiceRemind());
 }
 
-void Sound::xuatThongTin(){
-	Setting::xuatThongTin();
-	cout << setw(10) << get_media_level() << setw(10) << get_call_level() << setw(10) << get_navi_level() << setw(10) << get_notification_level() << endl;
+//xuat thong tin Sound
+void Sound::xuatThongTin(Setting arr_settings[], Sound arr_sounds[], int settingCnt) {
+	cout << setw(30) << left << "Owner name"
+		<< setw(35) << left << "Email"
+		<< setw(15) << left << "Key number"
+		<< setw(15) << left << "ODO number"
+		<< setw(25) << left << "Remind Service (km)"
+		<< setw(10) << left << "Media"
+		<< setw(10) << left << "Call"
+		<< setw(10) << left << "Navi"
+		<< setw(10) << left << "Notify" << endl;
+
+	//in ra tung thong tin cua Soundtrog arr
+	for (int i = 0; i < settingCnt; i++) {
+		cout << setw(30) << left << arr_settings[i].getCarName()
+			<< setw(35) << left << arr_settings[i].getEmail()
+			<< setw(15) << left << arr_settings[i].getPersonalKey()
+			<< setw(15) << left << arr_settings[i].getODO()
+			<< setw(25) << left << arr_settings[i].getServiceRemind()
+			<< setw(10) << left << arr_sounds[i].get_media_level()
+			<< setw(10) << left << arr_sounds[i].get_call_level()
+			<< setw(10) << left << arr_sounds[i].get_navi_level()
+			<< setw(10) << left << arr_sounds[i].get_notification_level()
+			<< endl;
+	}
 }
 
-int Sound::get_media_level(){
-	return media_level;
+int Sound::get_media_level() {
+	return this->media_level;
 }
 
-int Sound::get_call_level(){
-	return call_level;
+int Sound::get_call_level() {
+	return this->call_level;
 }
 
-int Sound::get_navi_level(){
-	return navi_level;
+int Sound::get_navi_level() {
+	return this->navi_level;
 }
 
-int Sound::get_notification_level(){
-	return notification_level;
+int Sound::get_notification_level() {
+	return this->notification_level;
 }
 
-void Sound::set_media_level(int data){
-	media_level = data;
+void Sound::set_media_level(int data) {
+	this->media_level = data;
 }
 
-void Sound::set_call_level(int data){
-	call_level = data;
+void Sound::set_call_level(int data) {
+	this->call_level = data;
 }
 
-void Sound::set_navi_level(int data){
-	navi_level = data;
+void Sound::set_navi_level(int data) {
+	this->navi_level = data;
 }
 
-void Sound::set_notification_level(int data){
-	notification_level = data;
-}
-
-string Sound::layMaSoCaNhan()
-{
-	return getPersonalKey();
-}
-
-string Sound::layTenChuXe()
-{
-	return getCarName();
-}
-
-string Sound::layEmail()
-{
-	return getEmail();
-}
-
-int Sound::layOdo()
-{
-	return getODO();
-}
-
-int Sound::layServiceRemind()
-{
-	return getServiceRemind();
-}
-
-void Sound::xuatThongTinRieng()
-{
-	cout << setiosflags(ios::left) << setw(23) << "MEDIA LEVEL" << setw(2) << ":" << get_media_level() << resetiosflags(ios::left) << endl;
-	cout << setiosflags(ios::left) << setw(23) << "CALL LEVEL" << setw(2) << ":" << get_call_level() << resetiosflags(ios::left) << endl;
-	cout << setiosflags(ios::left) << setw(23) << "NAVIGATION LEVEL" << setw(2) << ":" << get_navi_level() << resetiosflags(ios::left) << endl;
-	cout << setiosflags(ios::left) << setw(23) << "NOTIFICATION LEVEL" << setw(2) << ":" << get_notification_level() << resetiosflags(ios::left) << endl;
-}
-
-void Sound::set_car_name(string data)
-{
-	setCarName(data);
-}
-
-void Sound::set_personal_key(string data)
-{
-	setPersonalKey(data);
-}
-
-void Sound::set_email(string data)
-{
-	setEmail(data);
-}
-
-void Sound::set_odo(int data)
-{
-	setOdo(data);
-}
-
-void Sound::set_service_remind(int data)
-{
-	setServiceRemind(data);
-}
-
-string* Sound::layThongTinRieng(string* array)
-{
-	array = new string[4];
-	array[0] = to_string(get_media_level());
-	array[1] = to_string(get_call_level());
-	array[2] = to_string(get_navi_level());
-	array[3] = to_string(get_notification_level());
-	return array;
-}
-
-void Sound::thayDoiThongTinRieng(int number)
-{
-	set_media_level(number);
-	set_call_level(number);
-	set_navi_level(number);
-	set_notification_level(number);
+void Sound::set_notification_level(int data) {
+	this->notification_level = data;
 }
 

@@ -1,6 +1,3 @@
-#ifndef GENERAL_H_
-#define GENERAL_H_
-
 #include "Setting.h"
 #include <vector>
 #include <iostream>
@@ -9,33 +6,25 @@
 
 using namespace std;
 
+extern Setting arr_settings[100];//tao mang setting su dung cho toan bai
+extern int settingCnt;//tao index cua mang setting su dung cho toan bai
+
 class General : public Setting {
 public:
+	General(string language, string timeZone);
+	General(string personalKey, string timeZone, string language);
+	General(string carName, string personalKey, string email, int odo, int remind, string language, string timeZone);
 	General();
-	General(const General& u);
 	~General();
-	void nhapThongTin();
-	void xuatThongTin();
+	General nhapThongTin(Setting, string, string);
+	void xuatThongTin(Setting arr_settings[], General arr_generals[], int settingCnt);
 	string get_language();
 	string get_timeZone();
 	void set_timeZone(string data);
 	void set_language(string data);
-	string layMaSoCaNhan();
-	string layTenChuXe();
-	string layEmail();
-	int layOdo();
-	int layServiceRemind();
-	void xuatThongTinRieng();	//Xuat thong tin cua lop General
-	void set_car_name(string data);
-	void set_personal_key(string data);
-	void set_email(string data);
-	void set_odo(int data);
-	void set_service_remind(int data);
-	string* layThongTinRieng(string* array); //Lay thong tin rieng cua lop con ke thua
-	void thayDoiThongTinRieng(int number);	//Thay doi thong tin rieng cua lop
-private:
+
+protected:
 	string timeZone;
 	string language;
 };
 
-#endif // GENERAL_H_

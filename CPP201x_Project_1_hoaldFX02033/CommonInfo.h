@@ -25,6 +25,11 @@ public:
 		name = data;
 	}
 	
+	
+	void printData(int i){
+		cout  << setw(2) << i << ": " << setw(15) << number << name << endl;
+	}
+	
 private:
 	string number;
 	string name;		
