@@ -44,7 +44,7 @@ void List<T>::Sap_Xep()
     {
         for (int j = index - 1; j > i; --j)
         {
-            if (elements_[j]->layMaSoCaNhan().compare(elements_[j - 1]->layMaSoCaNhan()) == -1)
+            if (elements_[j]layMaSoCaNhan->().compare(elements_[j - 1]->layMaSoCaNhan()) == -1)
             {
                 p = elements_[j];
                 elements_[j] = elements_[j - 1];

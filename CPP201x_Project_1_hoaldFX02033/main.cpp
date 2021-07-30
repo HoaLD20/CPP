@@ -67,14 +67,14 @@ void menu()
 {
 
 	int selection = 0;
-
+	printf("\033c");
 	cout << "--- SELECT MENU ---"
 		 << endl
 		 << "1. Input setting information"
 		 << endl
 		 << "2. Print setting information"
 		 << endl
-		 << "3. Exit"
+		 << "0. Exit"
 		 << endl
 		 << "Your choice: ";
 	do
@@ -92,7 +92,7 @@ void menu()
 			printf("\033c");
 			XuatThongTinCaiDat();
 			break;
-		case 3:
+		case 0:
 			//system("cls");
 			printf("\033c");
 			cout << "Thanks for using this program" << endl;
@@ -102,7 +102,7 @@ void menu()
 			cout << "Please enter your choice from 1-3. Re-enter: ";
 			break;
 		}
-	} while (selection != 3);
+	} while (selection != 0);
 }
 
 //menu input display, sound, genaral
@@ -120,7 +120,7 @@ void NhapThongTinCaiDat()
 			 << endl
 			 << "3. General setting "
 			 << endl
-			 << "4. Back"
+			 << "0. Back"
 			 << endl
 			 << "Your choice: ";
 		selection = validInput("Your choose");
@@ -141,7 +141,7 @@ void NhapThongTinCaiDat()
 										  //system("cls");
 			printf("\033c");
 			break;
-		case 4:
+		case 0:
 			//system("cls");
 			printf("\033c");
 			menu(); //tro ve man hinh menu chinh
@@ -152,7 +152,7 @@ void NhapThongTinCaiDat()
 			cout << "Please enter your choice from 1-4. " << endl;
 			break;
 		}
-	} while (selection != 4);
+	} while (selection != 0);
 }
 
 //nhap thon tin cai dat cho Display
@@ -387,72 +387,57 @@ void XuatThongTinCaiDat()
 			 << endl
 			 << "4. Print all setting information"
 			 << endl
-			 << "5. Back"
+			 << "0. Back"
 			 << endl
 			 << "Your choice: ";
 		selection = validInput("Your choose");
 		switch (selection)
 		{
 		case 1:
-			//system("cls");
 			printf("\033c");
 			XuatThongTinCaiDat_Display(); //xuat thong tin cai dat cho Display
-			//system("pause");
 			cout << endl
 				 << "Press Enter to continue...";
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cin.get();
-			//system("cls");
 			printf("\033c");
 			break;
 		case 2:
-			//system("cls");
 			printf("\033c");
 			XuatThongTinCaiDat_Sound(); //xuat thong tin cai dat cho Sound
-			//system("pause");
 			cout << endl
 				 << "Press Enter to continue...";
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cin.get();
-			//system("cls");
 			printf("\033c");
 			break;
 		case 3:
-			//system("cls");
 			printf("\033c");
 			XuatThongTinCaiDat_General(); //xuat thong tin cai dat cho General
-			//system("pause");
 			cout << endl
 				 << "Press Enter to continue...";
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cin.get();
-			//system("cls");
+			//cin.get();
 			printf("\033c");
 			break;
 		case 4:
-			//system("cls");
 			printf("\033c");
 			XuatThongTatCaTinCaiDat(); //xuat tat ca thong tin cai dat
 			//system("pause");
 			cout << endl
 				 << "Press Enter to continue...";
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			cin.get();
-			//system("cls");
+			//cin.get();
 			printf("\033c");
 			break;
-		case 5:
-			//system("cls");
+		case 0:
 			printf("\033c");
 			menu(); //tro ve man hinh menu
 			break;
 		default:
-			//system("cls");
 			printf("\033c");
 			cout << "Please enter your choice from 1-4. " << endl;
 			break;
 		}
-	} while (selection != 5);
+	} while (selection != 0);
 }
 
 //tach chuoi
