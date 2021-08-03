@@ -481,7 +481,7 @@ void downloadTimeZone()
 		cout << endl
 			 << "Press Enter to continue...";
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cin.get();
+		// cin.get();
 	}
 	else
 	{
