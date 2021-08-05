@@ -165,11 +165,14 @@ void NhapThongTinCaiDat()
 	}
 	}
 }
-
-//Thay doi thong tin chung cua du lieu co cung ma so ca nhan voi du lieu vua nhap
-//neu du lieu chua duoc tao thi khoi tao du lieu mac dinh
-//u: du lieu vua nhap
-//selection: 1. Doi tuong vua nhap thuoc lop Display;  2. Lop Sound;  3. Lop General
+/**
+ * * Thay doi thong tin chung cua du lieu co cung ma so ca nhan voi du lieu vua nhap
+ * * neu du lieu chua duoc tao thi khoi tao du lieu mac dinh
+ * @param u: du lieu vua nhap
+ * @param selection: 1. Doi tuong vua nhap thuoc lop Display;  
+ * 2. Lop Sound;  
+ * 3. Lop General
+*/
 void ThayDoiCaiDatChungVaKhoiTaoDuLieu(Setting u, int selection)
 {
 	Setting *p = NULL;	   //Con tro tro den vung nho cua lop General hoac lop Display hoac lop Sound
@@ -369,12 +372,12 @@ void NhapThongTinCaiDat_General()
 		selection = ChonTimeZoneVaLanguage(timezoneList); //Lua chon timeZone
 
 		// gen.set_timeZone(to_string(GetTimeZoneAndLanguage(timezoneList, selection)));			  //Nhap gia tri timeZone cho doi tuong
-		gen.set_timeZone(GetTimeZoneAndLanguage(timezoneList, selection)); //Nhap gia tri timeZone cho doi tuong
+		gen.set_timeZone(to_string(selection)); //Nhap gia tri timeZone cho doi tuong
 
 		cout << "\nMOI BAN CHON LANGUAGE\n";
 		selection = ChonTimeZoneVaLanguage(languageList); //Lua chon language
 
-		gen.set_language(GetTimeZoneAndLanguage(languageList, selection)); //Nhap gia tri language cho doi tuong
+		gen.set_language(to_string(selection)); //Nhap gia tri language cho doi tuong
 
 		//Tim MSCN trung khop voi MSCN vua nhap
 		for (int i = 0; i < general.size(); ++i)
@@ -419,7 +422,7 @@ void NhapThongTinCaiDat_Display()
 		{
 			if (display.get(i)->layMaSoCaNhan().compare(disp.layMaSoCaNhan()) == 0)
 			{
-				cout << "Update display setting !" << endl;
+				cout << "Updated display setting !" << endl;
 				p = new Display(disp);		 //Cap phat vung nho co gia tri bang voi 'disp'
 				display.changeElement(p, i); //Thay doi gia tri cua bien con tro trong list display tai vi tri i
 				found = true;
@@ -558,9 +561,7 @@ void downloadLanguage()
 	ifstream f;
 	char c[256];
 	CommonInfo lang;
-
 	f.open("languages.txt");
-
 	while (!f.eof())
 	{
 		f.getline(c, 255);
@@ -568,11 +569,8 @@ void downloadLanguage()
 		lang.setName(explode(c, '/')[1]);	//Phan tu thu 2 cua mang vector sau khi explode() la number cua language
 		languageList.push_back(lang);
 	}
-
 	f.close();
-
 	CommonInfo tmp;
-
 	//Sap xep Language theo Alphabet
 	for (size_t i = 0; i < languageList.size() - 1; ++i)
 	{
@@ -682,9 +680,10 @@ void XuatThongTinTatCaCaiDat()
 		cout << "\n\tXUAT THONG TIN THEO:\n";
 		cout << " 1. Ten chu xe\n";
 		cout << " 2. Ma so ca nhan\n";
+		cout << " 0. Back\n";
 		cout << " Lua chon cua ban la: ";
 		cin >> selection;
-		if (selection.length() == 1 && selection[0] >= 49 && selection[0] <= 50)
+		if (selection.length() == 1 && selection[0] >= 48 && selection[0] <= 50)
 			break;
 		printf("\033c");
 	} while (true);
@@ -693,9 +692,17 @@ void XuatThongTinTatCaCaiDat()
 	do
 	{
 		if (selection == "1")
+		{
 			cout << "\n\t NHAP TEN CHU XE: ";
-		else
+		}
+		else if (selection == "2")
+		{
 			cout << "\n\t NHAP MA SO CA NHAN: ";
+		}
+		else if (selection == "0")
+		{
+			break;
+		}
 		cin.ignore();
 		getline(cin, keyOrName);
 
