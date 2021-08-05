@@ -74,11 +74,9 @@ int main(int argc, char **argv)
 			XuatThongTinCaiDat();
 			break;
 		case 0:
-			//system("cls");
 			printf("\033c");
 			// WriteOnFile(); //Ghi du lieu len file
 			cout << "\n\n\t\t--- CHAO TAM BIET ---\n\n";
-			//system("pause");
 			cout << endl
 				 << "Press Enter to continue...";
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
@@ -97,7 +95,6 @@ int menu()
 
 	do
 	{
-		//system("cls");
 		printf("\033c");
 		cout << "--- MOI BAN LUA CHON ---\n";
 		cout << "1. Nhap thong tin cai dat\n";
@@ -122,7 +119,6 @@ void NhapThongTinCaiDat()
 
 	do
 	{
-		// system("cls");
 		printf("\033c");
 		cout << "--- MOI BAN LUA CHON ---\n";
 		cout << "1-Nhap thong tin Display\n";
@@ -139,7 +135,6 @@ void NhapThongTinCaiDat()
 		}
 	} while (true);
 
-	//system("cls");
 	printf("\033c");
 	switch (selection)
 	{
@@ -261,6 +256,7 @@ void NhapThongTinCaiDat_Sound()
 		{
 			if (sound.get(i)->layMaSoCaNhan().compare(snd.layMaSoCaNhan()) == 0) //So sanh 2 ma so ca nhan
 			{
+				cout << "Update sound setting !" << endl;
 				p = new Sound(snd);		   //Cap phat vung nho co gia tri bang voi 'snd'
 				sound.changeElement(p, i); //Thay doi gia tri phan tu thu 'i' trong mang elements_ cua list 'sound' bang 'snd'
 				found = true;
@@ -270,6 +266,7 @@ void NhapThongTinCaiDat_Sound()
 
 		if (found == false)
 		{
+			cout << "Added new sound setting !" << endl;
 			p = new Sound(snd); //Cap phat vung nho co gia tri bang voi 'snd'
 			sound.add(p);		//Gan gia tri cho con tro trong mang "elements"_ list "sound"
 		}
@@ -384,6 +381,7 @@ void NhapThongTinCaiDat_General()
 		{
 			if (general.get(i)->layMaSoCaNhan().compare(gen.layMaSoCaNhan()) == 0)
 			{
+				cout << "Update general setting !" << endl;
 				p = new General(gen);		 //Cap phat vung nho co gia tri bang voi 'gen'
 				general.changeElement(p, i); //Thay doi gia tri cua bien con tro trong list general tai vi tri i
 				found = true;
@@ -392,6 +390,7 @@ void NhapThongTinCaiDat_General()
 		}
 		if (found == false)
 		{
+			cout << "Added new general setting !" << endl;
 			p = new General(gen); //Cap phat vung nho co gia tri bang voi 'gen'
 			general.add(p);		  //Them p vao mang elements_ cua list general
 		}
@@ -420,6 +419,7 @@ void NhapThongTinCaiDat_Display()
 		{
 			if (display.get(i)->layMaSoCaNhan().compare(disp.layMaSoCaNhan()) == 0)
 			{
+				cout << "Update display setting !" << endl;
 				p = new Display(disp);		 //Cap phat vung nho co gia tri bang voi 'disp'
 				display.changeElement(p, i); //Thay doi gia tri cua bien con tro trong list display tai vi tri i
 				found = true;
@@ -428,6 +428,7 @@ void NhapThongTinCaiDat_Display()
 		}
 		if (found == false)
 		{
+			cout << "Added new display setting !" << endl;
 			p = new Display(disp); //Cap phat vung nho co gia tri bang voi 'disp'
 			display.add(p);		   //Them p vao mang elements_ cua list display
 		}

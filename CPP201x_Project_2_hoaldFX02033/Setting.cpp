@@ -323,7 +323,6 @@ int checkLevel(const char* ch)
 {
 	char c[21];
 	int ret;
-
 	do
 	{
 		try
