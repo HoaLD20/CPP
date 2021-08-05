@@ -25,6 +25,7 @@ Sound, and General. Use arrays to store the following data:
 - Editor: Visual studio code - lastest version
 > ### Run:
   - cd to my project
+  - g++ CheckValid.cpp General.cpp Setting.cpp Display.cpp main.cpp CommonInfo.cpp Sound.cpp -o main
   - ./main 
 
 

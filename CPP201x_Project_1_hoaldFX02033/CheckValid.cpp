@@ -47,7 +47,10 @@ string validEmail()
 	{
 		check = true;
 		getline(cin, input);
-		if (!regex_match(input, regex("[a-zA-Z0-9][a-zA-Z0-9.]{1,28}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,}){1,}")))
+		/*alphanumeric or underscore character) or . or + or -, one or more times*/
+		//if (!regex_match(input, regex("[a-zA-Z0-9][a-zA-Z0-9.]{1,28}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,}){1,}")))
+		if (!regex_match(input, regex("^[\\w.+\\-]+@gmail\\.com$")))
+
 		{
 			cout << "Re-enter the email with the format abc@gmail.com: ";
 			check = false;

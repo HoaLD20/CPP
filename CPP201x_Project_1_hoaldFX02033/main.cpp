@@ -10,7 +10,8 @@
 #include <istream>
 #include <fstream>
 #include <iostream>
-
+#include <iterator>
+using namespace std;
 //khai bao object cua cac class
 Display *display = new Display();
 Sound *sound = new Sound();
@@ -29,6 +30,9 @@ static int countCar = 1;	 //dem so index car cua xe
 
 vector<CommonInfo> timezoneList;
 vector<CommonInfo> languageList;
+bool KiemTraMSCNHoacTenDis(Display array_data[100], int size, string, int &, string); //Kiem tra MSCN hoac ten
+bool KiemTraMSCNHoacTenSou(Sound array_data[100], int size, string, int &, string);	  //Kiem tra MSCN hoac ten
+bool KiemTraMSCNHoacTenGen(General array_data[100], int size, string, int &, string); //Kiem tra MSCN hoac ten
 
 void NhapThongTinCaiDat();
 void XuatThongTinCaiDat();
@@ -294,7 +298,6 @@ void NhapThongTinCaiDat_General()
 
 	do
 	{
-		//system("cls");
 		printf("\033c");
 		bool exist = false;
 		int indexCar = -1;
@@ -321,18 +324,14 @@ void NhapThongTinCaiDat_General()
 			//neu ma so ca nhan khong ton tai
 			if (!exist)
 			{
-
 				cout << "	-> This is car, data will be appended to your list" << endl;
 
 				//neu xe khong ton tai thi luu thang vao arr setting luon
 				arr_settings[settingCnt] = st;
-
 				//chon language
 				downloadLanguage(); //hien list language cho ng dung chon
-
 				//chon timezone
 				downloadTimeZone(); //hien list timezone cho ng dung chon
-
 				//nhap thong tin cho General
 				General gen;
 				arr_generals[settingCnt] = general->nhapThongTin(st, timezoneT, languageT);
@@ -425,7 +424,6 @@ void XuatThongTinCaiDat()
 			cout << endl
 				 << "Press Enter to continue...";
 			cin.ignore(numeric_limits<streamsize>::max(), '\n');
-			//cin.get();
 			printf("\033c");
 			break;
 		case 0:
@@ -481,7 +479,6 @@ void downloadTimeZone()
 		cout << endl
 			 << "Press Enter to continue...";
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		// cin.get();
 	}
 	else
 	{
@@ -492,11 +489,8 @@ void downloadTimeZone()
 		{
 			while (f.eof() == false)
 			{
-				// f.seekg(1, 1);					 //nhich qua 1 byte de bo dau '('
-				f.seekg(1, ios::beg); //nhich qua 1 byte de bo dau '('
-
 				getline(f, str);				 //doc file
-				data_vector = explode(str, ')'); //cat cuoi dua vao dau ')'
+				data_vector = explode(str, '/'); //cat cuoi dua vao dau ')'
 				if (data_vector.size() == 2)
 				{
 					// set data cua Language vao common info vector
@@ -513,7 +507,7 @@ void downloadTimeZone()
 		{
 			lineNumber++;
 			cout << "  " << lineNumber << ": "
-				 << "(" << item.getNumber() + ")" + item.getName() << "\n"; //in data trong file ra man hinh
+				 << item.getNumber() + item.getName() << "\n"; //in data trong file ra man hinh
 		}
 
 		//nhap lua chon cho Timezone
@@ -522,19 +516,14 @@ void downloadTimeZone()
 
 		//hien lua chon ra man hình
 		cout << "	Timezone: " << timezoneList[selection - 1].getNumber() << endl;
-		;
 		//gan Timezone vao timezoneT de hien Timezone o chuc nang General Setting
 		timezoneT = timezoneList[selection - 1].getNumber();
 		general->set_timeZone(timezoneList[selection - 1].getNumber()); //set Timezone cho general
 	}
-
 	f.close();
-	//system("pause");
 	cout << endl
 		 << "Press Enter to continue...";
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cin.get();
-	//system("cls");
 	printf("\033c");
 }
 
@@ -557,7 +546,6 @@ void downloadLanguage()
 		cout << endl
 			 << "Press Enter to continue...";
 		cin.ignore(numeric_limits<streamsize>::max(), '\n');
-		cin.get();
 	}
 	else
 	{
@@ -567,7 +555,6 @@ void downloadLanguage()
 		{
 			while (getline(f, str))
 			{
-
 				data_vector = explode(str, '/'); //cat chuoi dua vao dau '/'
 				if (data_vector.size() == 2)
 				{
@@ -594,19 +581,14 @@ void downloadLanguage()
 
 		//hien lua chon ra man hình
 		cout << "	Language: " << languageList[selection - 1].getName() << endl;
-		;
 		//gan language vao languageT de hien language o chuc nang General Setting
 		languageT = languageList[selection - 1].getName();
 		general->set_language(languageList[selection - 1].getName()); //set language cho general
 	}
-
 	f.close();
-	//system("pause");
 	cout << endl
 		 << "Press Enter to continue...";
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	cin.get();
-	//system("cls");
 	printf("\033c");
 }
 
@@ -629,70 +611,412 @@ void XuatThongTinCaiDat_General()
 }
 
 //xuat tat ca thogn tin cai dat cau xe
+
 void XuatThongTatCaTinCaiDat()
 {
+
+	char continues = 'n';
+	string keyOrName;
+	bool foundDis, foundSou, foundGen;		   //true: co ton tai ma so ca nhan hoac ten chu xe,  false: khong ton tai ma so ca nhan hoac ten chu xe
+	int locationDis, locationSou, locationGen; //Vi tri du lieu trong mang trung voi MSCN hoac ten chu xe dang tim kiem
+	string selection;
+	string noInfo = "chua cai dat thong tin";
+
+	do
+	{
+		cout << "\n\tXUAT THONG TIN THEO:\n";
+		cout << " 1. Ten chu xe\n";
+		cout << " 2. Ma so ca nhan\n";
+		cout << " Lua chon cua ban la: ";
+		cin >> selection;
+		if (selection.length() == 1 && selection[0] >= 49 && selection[0] <= 50)
+			break;
+		printf("\033c");
+	} while (true);
+
+	printf("\033c");
+	do
+	{
+		if (selection == "1")
+		{
+			cout << "\n\t NHAP TEN CHU XE: ";
+		}
+		else
+		{
+			cout << "\n\t NHAP MA SO CA NHAN: ";
+		}
+		cin.ignore();
+		getline(cin, keyOrName);
+
+		//Kiem tra su ton tai cua du lieu co cung MSCN hoac ten chu xe
+		foundDis = KiemTraMSCNHoacTenDis(arr_displays, end(arr_displays) - begin(arr_displays), keyOrName, locationDis, selection);
+		foundSou = KiemTraMSCNHoacTenSou(arr_sounds, end(arr_sounds) - begin(arr_sounds), keyOrName, locationSou, selection);
+		foundGen = KiemTraMSCNHoacTenGen(arr_generals, end(arr_generals) - begin(arr_generals), keyOrName, locationGen, selection);
+
+		if (foundDis == false && foundSou == false && foundGen == false) //Khong ton tai MSCN o 3 list display, sound, general
+		{
+			if (selection == "1")
+			{
+				cout << " (!) TEN CHU XE KHONG TON TAI!\n";
+				cout << " TIEP TUC NHAP TEN CHU XE? (y/n): ";
+			}
+			else
+			{
+				cout << " (!) MA SO CA NHAN KHONG TON TAI!\n";
+				cout << " TIEP TUC NHAP MA SO CA NHAN? (y/n): ";
+			}
+
+			do
+			{
+				cin >> continues;
+			} while (continues != 'y' && continues != 'n');
+
+			if (continues == 'n')
+				return;
+		}
+		else
+		{
+			break;
+		}
+
+	} while (continues == 'y');
+
 	cout << "--- All setting ---" << endl;
 
 	//in ra toan bo thong tin cua tung xe
-	for (int i = 0; i < settingCnt; i++)
+
+	if (selection == "1")
 	{
-
-		cout << setw(10) << left << i + 1 << setw(30) << left << "Owner name" << setw(35) << left << "Email" << setw(20) << left << "Key number" << setw(20) << left << "ODO number" << setw(25) << left << "Remind Service (km)" << endl;
-
-		//in data cua Setting
-		cout << setw(10) << left << ""
-			 << setw(30) << left << arr_settings[i].getCarName()
-			 << setw(35) << left << arr_settings[i].getEmail()
-			 << setw(20) << left << arr_settings[i].getPersonalKey()
-			 << setw(20) << left << arr_settings[i].getODO()
-			 << setw(25) << left << arr_settings[i].getServiceRemind() << endl;
-
-		//in data cua Display
-		for (int count = 0; count < settingCnt; count++)
+		/*show theo ho ten*/
+		if (foundDis == true)
 		{
-			if (arr_settings[i].getPersonalKey() == arr_displays[count].getPersonalKey())
+			for (int i = 0; i < settingCnt; i++)
 			{
-				cout << setw(20) << left << "Display:" << setw(15) << "Light level" << setw(20) << "Screen Light level" << setw(15) << "Taplo Light" << endl;
+				if (arr_displays[i].getCarName().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+				{
+					cout << setw(10) << left << i + 1 << setw(30) << left << "Owner name" << setw(35) << left << "Email" << setw(20) << left << "Key number" << setw(20) << left << "ODO number" << setw(25) << left << "Remind Service (km)" << endl;
+					//in data cua Setting
+					cout << setw(10) << left << ""
+						 << setw(30) << left << arr_settings[i].getCarName()
+						 << setw(35) << left << arr_settings[i].getEmail()
+						 << setw(20) << left << arr_settings[i].getPersonalKey()
+						 << setw(20) << left << arr_settings[i].getODO()
+						 << setw(25) << left << arr_settings[i].getServiceRemind() << endl;
 
-				cout << setw(20) << left << ""
-					 << setw(15) << arr_displays[count].get_light_level()
-					 << setw(20) << arr_displays[count].get_screen_light_level()
-					 << setw(15) << arr_displays[count].get_taplo_light_level() << endl;
-				break;
+					//in data cua Display
+					for (int j = 0; j < (end(arr_displays) - begin(arr_displays)); ++j)
+					{
+						if (arr_displays[j].getCarName().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+						{
+							cout << setw(20) << left << "Display:" << setw(15) << "Light level" << setw(20) << "Screen Light level" << setw(15) << "Taplo Light" << endl;
+
+							cout << setw(20) << left << ""
+								 << setw(15) << arr_displays[j].get_light_level()
+								 << setw(20) << arr_displays[j].get_screen_light_level()
+								 << setw(15) << arr_displays[j].get_taplo_light_level() << endl;
+						}
+						break;
+					}
+				}
 			}
 		}
-
-		//in data cua Sound
-		for (int count = 0; count < settingCnt; count++)
+		else
 		{
-			if (arr_settings[i].getPersonalKey() == arr_sounds[count].getPersonalKey())
-			{
-				cout << setw(20) << left << "Sound:" << setw(10) << left << "Media" << setw(10) << left << "Call" << setw(15) << left << "Navigation" << setw(10) << left << "Notify" << endl;
-
-				cout << setw(20) << left << ""
-					 << setw(10) << arr_sounds[count].get_media_level()
-					 << setw(10) << arr_sounds[count].get_call_level()
-					 << setw(15) << arr_sounds[count].get_navi_level()
-					 << setw(10) << arr_sounds[count].get_notification_level() << endl;
-				break;
-			}
+			cout << setiosflags(ios::left) << setw(23) << "LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "SCREEN LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "TAPLO LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
 		}
 
-		//in data cua General
-		for (int count = 0; count < settingCnt; count++)
+		cout << " --- Thong tin Sound ---\n";
+		if (foundSou == true)
 		{
-			if (arr_settings[i].getPersonalKey() == arr_generals[count].getPersonalKey())
+			//in data cua Sound
+			for (int i = 0; i < settingCnt; i++)
 			{
-				cout << setw(20) << "General:" << setw(20) << "Timezone" << setw(50) << "Language" << endl;
-				cout << setw(20) << left << ""
-					 << setw(20) << arr_generals[count].get_timeZone()
-					 << setw(50) << arr_generals[count].get_language() << endl;
-				break;
+
+				if (arr_sounds[i].getCarName().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+				{
+					cout << setw(10) << left << i + 1 << setw(30) << left << "Owner name" << setw(35) << left << "Email" << setw(20) << left << "Key number" << setw(20) << left << "ODO number" << setw(25) << left << "Remind Service (km)" << endl;
+					//in data cua Setting
+					cout << setw(10) << left << ""
+						 << setw(30) << left << arr_settings[i].getCarName()
+						 << setw(35) << left << arr_settings[i].getEmail()
+						 << setw(20) << left << arr_settings[i].getPersonalKey()
+						 << setw(20) << left << arr_settings[i].getODO()
+						 << setw(25) << left << arr_settings[i].getServiceRemind() << endl;
+
+					//in data cua Display
+					for (int j = 0; j < (end(arr_sounds) - begin(arr_sounds)); ++j)
+					{
+						if (arr_sounds[j].getCarName().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+						{
+							cout << setw(20) << left << "Sound:" << setw(10) << left << "Media" << setw(10) << left << "Call" << setw(15) << left << "Navigation" << setw(10) << left << "Notify" << endl;
+
+							cout << setw(20) << left << ""
+								 << setw(10) << arr_sounds[j].get_media_level()
+								 << setw(10) << arr_sounds[j].get_call_level()
+								 << setw(15) << arr_sounds[j].get_navi_level()
+								 << setw(10) << arr_sounds[j].get_notification_level() << endl;
+						}
+						break;
+					}
+				}
 			}
 		}
-		cout << endl
-			 << endl;
+		else
+		{
+			cout << setiosflags(ios::left) << setw(23) << "MEDIA LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "CALL LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "NAVIGATION LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "NOTIFICATION LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+		}
+
+		cout << " --- Thong tin General ---\n";
+		if (foundGen == true)
+		{
+			//in data cua General
+			for (int i = 0; i < settingCnt; i++)
+			{
+
+				if (arr_generals[i].getCarName().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+				{
+					cout << setw(10) << left << i + 1 << setw(30) << left << "Owner name" << setw(35) << left << "Email" << setw(20) << left << "Key number" << setw(20) << left << "ODO number" << setw(25) << left << "Remind Service (km)" << endl;
+					//in data cua Setting
+					cout << setw(10) << left << ""
+						 << setw(30) << left << arr_settings[i].getCarName()
+						 << setw(35) << left << arr_settings[i].getEmail()
+						 << setw(20) << left << arr_settings[i].getPersonalKey()
+						 << setw(20) << left << arr_settings[i].getODO()
+						 << setw(25) << left << arr_settings[i].getServiceRemind() << endl;
+
+					//in data cua Display
+					for (int j = 0; j < (end(arr_generals) - begin(arr_generals)); ++j)
+					{
+						if (arr_generals[j].getCarName().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+						{
+							cout << setw(20) << "General:" << setw(20) << "Timezone" << setw(50) << "Language" << endl;
+							cout << setw(20) << left << ""
+								 << setw(20) << arr_generals[j].get_timeZone()
+								 << setw(50) << arr_generals[j].get_language() << endl;
+						}
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			cout << setiosflags(ios::left) << setw(23) << "TIME ZONE" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "LANGUAGE" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+		}
 	}
+	else
+	{
+		/*show theo mscn*/
+
+		for (int i = 0; i < settingCnt; i++)
+		{
+			if (arr_displays[i].getPersonalKey().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+			{
+				cout << setw(10) << left << i + 1 << setw(30) << left << "Owner name" << setw(35) << left << "Email" << setw(20) << left << "Key number" << setw(20) << left << "ODO number" << setw(25) << left << "Remind Service (km)" << endl;
+				//in data cua Setting
+				cout << setw(10) << left << ""
+					 << setw(30) << left << arr_settings[i].getCarName()
+					 << setw(35) << left << arr_settings[i].getEmail()
+					 << setw(20) << left << arr_settings[i].getPersonalKey()
+					 << setw(20) << left << arr_settings[i].getODO()
+					 << setw(25) << left << arr_settings[i].getServiceRemind() << endl;
+			}
+		}
+
+		if (foundDis == true)
+		{
+			//in data cua Display
+			for (int i = 0; i < settingCnt; i++)
+			{
+				if (arr_displays[i].getPersonalKey().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+				{
+					//in data cua Display
+					for (int j = 0; j < (end(arr_displays) - begin(arr_displays)); ++j)
+					{
+						if (arr_displays[j].getPersonalKey().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+						{
+							cout << setw(20) << left << "Display:" << setw(15) << "Light level" << setw(20) << "Screen Light level" << setw(15) << "Taplo Light" << endl;
+
+							cout << setw(20) << left << ""
+								 << setw(15) << arr_displays[j].get_light_level()
+								 << setw(20) << arr_displays[j].get_screen_light_level()
+								 << setw(15) << arr_displays[j].get_taplo_light_level() << endl;
+						}
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			cout << setiosflags(ios::left) << setw(23) << "LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "SCREEN LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "TAPLO LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+		}
+
+		cout << " --- Thong tin Sound ---\n";
+		if (foundSou == true)
+		{
+			//in data cua Sound
+			for (int i = 0; i < settingCnt; i++)
+			{
+				if (arr_sounds[i].getPersonalKey().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+				{
+					//in data cua Display
+					for (int j = 0; j < (end(arr_sounds) - begin(arr_sounds)); ++j)
+					{
+						if (arr_sounds[j].getPersonalKey().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+						{
+							cout << setw(20) << left << "Sound:" << setw(10) << left << "Media" << setw(10) << left << "Call" << setw(15) << left << "Navigation" << setw(10) << left << "Notify" << endl;
+
+							cout << setw(20) << left << ""
+								 << setw(10) << arr_sounds[j].get_media_level()
+								 << setw(10) << arr_sounds[j].get_call_level()
+								 << setw(15) << arr_sounds[j].get_navi_level()
+								 << setw(10) << arr_sounds[j].get_notification_level() << endl;
+						}
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			cout << setiosflags(ios::left) << setw(23) << "MEDIA LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "CALL LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "NAVIGATION LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "NOTIFICATION LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+		}
+
+		cout << " --- Thong tin General ---\n";
+		if (foundGen == true)
+		{
+			//in data cua General
+			for (int i = 0; i < settingCnt; i++)
+			{
+				if (arr_generals[i].getPersonalKey().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+				{
+					//in data cua Display
+					for (int j = 0; j < (end(arr_generals) - begin(arr_generals)); ++j)
+					{
+						if (arr_generals[j].getPersonalKey().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+						{
+							cout << setw(20) << "General:" << setw(20) << "Timezone" << setw(50) << "Language" << endl;
+							cout << setw(20) << left << ""
+								 << setw(20) << arr_generals[j].get_timeZone()
+								 << setw(50) << arr_generals[j].get_language() << endl;
+						}
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			cout << setiosflags(ios::left) << setw(23) << "TIME ZONE" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "LANGUAGE" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+		}
+	}
+}
+
+//true: ton tai ma so ca nhan,  false: khong ton tai ma so ca nhan
+//location: vi tri co MSCN trung voi personalKey
+//selection: 1.ten chu xe,   2.ma so ca nhan
+bool KiemTraMSCNHoacTenDis(Display array_data[100], int size, string keyOrName, int &location, string selection)
+{
+	if (selection == "1")
+	{
+		for (int i = 0; i < size; ++i)
+		{
+			if (array_data[i].getCarName().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+			{
+				location = i;
+				return true;
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < size; ++i)
+		{
+			if (array_data[i].getPersonalKey().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+			{
+				location = i;
+				return true;
+			}
+		}
+	}
+
+	location = -1;
+	return false;
+}
+//true: ton tai ma so ca nhan,  false: khong ton tai ma so ca nhan
+//location: vi tri co MSCN trung voi personalKey
+//selection: 1.ten chu xe,   2.ma so ca nhan
+bool KiemTraMSCNHoacTenSou(Sound array_data[100], int size, string keyOrName, int &location, string selection)
+{
+	if (selection == "1")
+	{
+		for (int i = 0; i < size; ++i)
+		{
+			if (array_data[i].getCarName().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+			{
+				location = i;
+				return true;
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < size; ++i)
+		{
+			if (array_data[i].getPersonalKey().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+			{
+				location = i;
+				return true;
+			}
+		}
+	}
+
+	location = -1;
+	return false;
+}
+//true: ton tai ma so ca nhan,  false: khong ton tai ma so ca nhan
+//location: vi tri co MSCN trung voi personalKey
+//selection: 1.ten chu xe,   2.ma so ca nhan
+bool KiemTraMSCNHoacTenGen(General array_data[100], int size, string keyOrName, int &location, string selection)
+{
+	if (selection == "1")
+	{
+		for (int i = 0; i < size; ++i)
+		{
+			if (array_data[i].getCarName().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+			{
+				location = i;
+				return true;
+			}
+		}
+	}
+	else
+	{
+		for (int i = 0; i < size; ++i)
+		{
+			if (array_data[i].getPersonalKey().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+			{
+				location = i;
+				return true;
+			}
+		}
+	}
+
+	location = -1;
+	return false;
 }
 
 /*
