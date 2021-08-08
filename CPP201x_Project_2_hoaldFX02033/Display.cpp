@@ -130,6 +130,5 @@ void Display::nhapThongTin()
 void Display::xuatThongTin()
 {
 	Setting::xuatThongTin();
-	// set space when out put
 	cout << setw(10) << get_light_level() << setw(10) << get_screen_light_level() << setw(10) << get_taplo_light_level() << endl;
 }

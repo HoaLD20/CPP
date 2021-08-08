@@ -7,27 +7,32 @@
 
 using namespace std;
 
-class CommonInfo{
+class CommonInfo
+{
 public:
-	string getNumber() {
-		return number;	
+	string getNumber()
+	{
+		return number;
 	}
-	
-	string getName(){
+
+	string getName()
+	{
 		return name;
 	}
-	
-	void setNumber(string data) {
-		number = data;	
+
+	void setNumber(string data)
+	{
+		number = data;
 	}
-	
-	void setName(string data){
+
+	void setName(string data)
+	{
 		name = data;
 	}
-	
+
 private:
 	string number;
-	string name;		
+	string name;
 };
 
 #endif // COMMON_H_

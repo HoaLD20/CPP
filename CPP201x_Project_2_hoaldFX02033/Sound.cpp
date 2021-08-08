@@ -1,13 +1,14 @@
 #include "Sound.h"
 
-Sound::Sound(): Setting(){
+Sound::Sound() : Setting()
+{
 	media_level = 0;
 	call_level = 0;
 	navi_level = 0;
 	notification_level = 0;
 }
 
-Sound::Sound(const Sound& u):Setting(u)
+Sound::Sound(const Sound &u) : Setting(u)
 {
 	media_level = u.media_level;
 	call_level = u.call_level;
@@ -15,9 +16,10 @@ Sound::Sound(const Sound& u):Setting(u)
 	notification_level = u.notification_level;
 }
 
-Sound::~Sound(){}
+Sound::~Sound() {}
 
-void Sound::nhapThongTin(){
+void Sound::nhapThongTin()
+{
 	Setting::nhapThongTin();
 	set_media_level(checkLevel("MEDIA LEVEL: "));
 	set_call_level(checkLevel("CALL LEVEL: "));
@@ -25,40 +27,49 @@ void Sound::nhapThongTin(){
 	set_notification_level(checkLevel("NOTIFICATION LEVEL: "));
 }
 
-void Sound::xuatThongTin(){
+void Sound::xuatThongTin()
+{
 	Setting::xuatThongTin();
 	cout << setw(10) << get_media_level() << setw(10) << get_call_level() << setw(10) << get_navi_level() << setw(10) << get_notification_level() << endl;
 }
 
-int Sound::get_media_level(){
+int Sound::get_media_level()
+{
 	return media_level;
 }
 
-int Sound::get_call_level(){
+int Sound::get_call_level()
+{
 	return call_level;
 }
 
-int Sound::get_navi_level(){
+int Sound::get_navi_level()
+{
 	return navi_level;
 }
 
-int Sound::get_notification_level(){
+int Sound::get_notification_level()
+{
 	return notification_level;
 }
 
-void Sound::set_media_level(int data){
+void Sound::set_media_level(int data)
+{
 	media_level = data;
 }
 
-void Sound::set_call_level(int data){
+void Sound::set_call_level(int data)
+{
 	call_level = data;
 }
 
-void Sound::set_navi_level(int data){
+void Sound::set_navi_level(int data)
+{
 	navi_level = data;
 }
 
-void Sound::set_notification_level(int data){
+void Sound::set_notification_level(int data)
+{
 	notification_level = data;
 }
 
@@ -120,7 +131,7 @@ void Sound::set_service_remind(int data)
 	setServiceRemind(data);
 }
 
-string* Sound::layThongTinRieng(string* array)
+string *Sound::layThongTinRieng(string *array)
 {
 	array = new string[4];
 	array[0] = to_string(get_media_level());
@@ -137,4 +148,3 @@ void Sound::thayDoiThongTinRieng(int number)
 	set_navi_level(number);
 	set_notification_level(number);
 }
-

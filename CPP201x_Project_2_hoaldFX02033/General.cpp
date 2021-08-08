@@ -1,42 +1,48 @@
 #include "General.h"
 #include "CommonInfo.h"
 
-General::General():Setting()
+General::General() : Setting()
 {
 	timeZone = "";
 	language = "";
 }
 
-General::General(const General& u):Setting(u)
+General::General(const General &u) : Setting(u)
 {
 	timeZone = u.timeZone;
 	language = u.language;
 }
 
-General::~General(){}
+General::~General() {}
 
-void General::nhapThongTin(){
+void General::nhapThongTin()
+{
 	Setting::nhapThongTin();
 }
 
-void General::xuatThongTin(){
+void General::xuatThongTin()
+{
 	Setting::xuatThongTin();
 	cout << setw(15) << get_timeZone() << setw(15) << get_language() << endl;
 }
 
-string General::get_language(){
+string General::get_language()
+{
 	return language;
 }
 
-string General::get_timeZone(){
+string General::get_timeZone()
+{
 	return timeZone;
 }
 
-void General::set_timeZone(string data){
+void General::set_timeZone(string data)
+{
 	timeZone = data;
 }
 
-void General::set_language(string data){
+void General::set_language(string data)
+{
 	language = data;
 }
 
@@ -96,7 +102,7 @@ void General::set_service_remind(int data)
 	setServiceRemind(data);
 }
 
-string* General::layThongTinRieng(string* array)
+string *General::layThongTinRieng(string *array)
 {
 	array = new string[2];
 	array[0] = get_timeZone();

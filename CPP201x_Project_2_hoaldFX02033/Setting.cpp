@@ -9,7 +9,7 @@ Setting::Setting()
 	service_remind = 0;
 }
 
-Setting::Setting(const Setting& u)
+Setting::Setting(const Setting &u)
 {
 	car_name = u.car_name;
 	personal_key = u.personal_key;
@@ -18,13 +18,15 @@ Setting::Setting(const Setting& u)
 	service_remind = u.service_remind;
 }
 
-Setting::~Setting(){}
+Setting::~Setting() {}
 
-string Setting::getCarName(){
+string Setting::getCarName()
+{
 	return car_name;
 }
 
-string Setting::getPersonalKey(){
+string Setting::getPersonalKey()
+{
 	return personal_key;
 }
 
@@ -33,11 +35,13 @@ string Setting::getEmail()
 	return email;
 }
 
-int Setting::getODO (){
+int Setting::getODO()
+{
 	return odo;
 }
 
-int Setting::getServiceRemind(){
+int Setting::getServiceRemind()
+{
 	return service_remind;
 }
 
@@ -66,7 +70,8 @@ void Setting::setServiceRemind(int data)
 	service_remind = data;
 }
 
-void Setting::nhapThongTin(){
+void Setting::nhapThongTin()
+{
 	string name;
 
 	cout << "TEN CHU XE: ";
@@ -79,9 +84,10 @@ void Setting::nhapThongTin(){
 	setServiceRemind(serviceRemindInput(getODO()));
 }
 
-void Setting::xuatThongTin(){
+void Setting::xuatThongTin()
+{
 	cout << setw(20) << getCarName() << setw(25) << getEmail() << setw(10) << getPersonalKey()
-		<< setw(10) << getODO() << setw(10) << getServiceRemind();
+		 << setw(10) << getODO() << setw(10) << getServiceRemind();
 }
 
 void Setting::xuatThongTinChung()
@@ -118,7 +124,7 @@ int Setting::layServiceRemind()
 	return getServiceRemind();
 }
 
-void Setting::thayDoiThongTinChung(Setting& u)
+void Setting::thayDoiThongTinChung(Setting &u)
 {
 	setPersonalKey(u.getPersonalKey());
 	setCarName(u.getCarName());
@@ -131,7 +137,7 @@ void Setting::xuatThongTinRieng()
 {
 }
 
-string* Setting::layThongTinRieng(string* array)
+string *Setting::layThongTinRieng(string *array)
 {
 	return nullptr;
 }
@@ -143,28 +149,22 @@ void Setting::thayDoiThongTinRieng(int number)
 string emailInput()
 {
 	string email;
-	string local_part;	//Ten hop thu
-	string domain;		//Ten mien
-	size_t pos;			//Vi tri @ trong email, dung de tach ten hop thu va ten mien
+	string local_part; //Ten hop thu
+	string domain;	   //Ten mien
+	size_t pos;		   //Vi tri @ trong email, dung de tach ten hop thu va ten mien
 
 	//Mau de kiem tra email nhap co dung dinh dang
-	const regex patternMain
-	("^[a-zA-Z0-9][a-zA-Z0-9.]{1,28}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,4}){1,2}$");
+	const regex patternMain("^[a-zA-Z0-9][a-zA-Z0-9.]{1,28}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,4}){1,2}$");
 	//Mau de kiem tra phan ten mien
-	const regex patternDomain
-	("^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,4}){1,2}$");
+	const regex patternDomain("^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,4}){1,2}$");
 	//Mau de kiem tra nhap dung ky tu o phan ten hop thu
-	const regex patternRightCharLocal
-	("[^a-zA-Z0-9.]");
+	const regex patternRightCharLocal("[^a-zA-Z0-9.]");
 	//Mau de kiem tra ten hop thu khong duoc bat dau bang dau '.'
-	const regex patternFirstDot
-	("^\\.");
+	const regex patternFirstDot("^\\.");
 	//Mau de kiem tra ten hop thu khong duoc ket thuc bang dau '.'
-	const regex patternLastDot
-	("\\.$");
+	const regex patternLastDot("\\.$");
 	//Mau de kiem tra co ky tu @ trong chuoi email nhap vao khong
-	const regex patternA
-	("@");
+	const regex patternA("@");
 
 	do
 	{
@@ -179,9 +179,9 @@ string emailInput()
 				continue;
 			}
 
-			pos = email.find_last_of('@'); //Tim '@' bat dau tu cuoi chuoi email
-			domain = email.substr(pos + 1);	//Phan ten mien cua email
-			local_part = email.substr(0, pos);//Phan ten hop thu cua email
+			pos = email.find_last_of('@');	   //Tim '@' bat dau tu cuoi chuoi email
+			domain = email.substr(pos + 1);	   //Phan ten mien cua email
+			local_part = email.substr(0, pos); //Phan ten hop thu cua email
 
 			if (regex_match(email, patternMain))
 				return email;
@@ -194,14 +194,15 @@ string emailInput()
 			else if (regex_search(local_part, patternFirstDot) || regex_search(local_part, patternLastDot))
 				throw "\t(!) Ky tu bat dau va ket thuc ten hop thu phai khac '.'\n";
 		}
-		catch (const char* errorName)
+		catch (const char *errorName)
 		{
 			cout << errorName;
 		}
 	} while (true);
 }
 
-string personalKeyInput() {
+string personalKeyInput()
+{
 	string id;
 
 	//Mau gom 8 ky tu so (0-9) lien tiep nhau
@@ -229,7 +230,7 @@ string personalKeyInput() {
 				throw "\t(!) Ma so phai la 8 ky tu so\n";
 			}
 		}
-		catch (const char* errorName)
+		catch (const char *errorName)
 		{
 			cout << errorName;
 		}
@@ -250,7 +251,6 @@ int ODOInput()
 			if (strlen(c) == 0)
 			{
 				throw "\t(!) Nhap ky tu so (0-9)\n";
-
 			}
 			if (strlen(c) > 7)
 			{
@@ -271,14 +271,14 @@ int ODOInput()
 			}
 			return odo;
 		}
-		catch (const char* errorName)
+		catch (const char *errorName)
 		{
 			cout << errorName;
 		}
 	} while (true);
 }
 
-int serviceRemindInput(const int& odo) //Truyen thong tin ODO de so sanh voi km bao hanh
+int serviceRemindInput(const int &odo) //Truyen thong tin ODO de so sanh voi km bao hanh
 {
 	char c[21];
 	int km;
@@ -312,17 +312,18 @@ int serviceRemindInput(const int& odo) //Truyen thong tin ODO de so sanh voi km 
 			}
 			return km;
 		}
-		catch (const char* errorName)
+		catch (const char *errorName)
 		{
 			cout << errorName;
 		}
 	} while (true);
 }
 
-int checkLevel(const char* ch)
+int checkLevel(const char *ch)
 {
 	char c[21];
 	int ret;
+
 	do
 	{
 		try
@@ -344,7 +345,7 @@ int checkLevel(const char* ch)
 					throw "\t(!) Nhap so nguyen tu 1 den 5\n";
 			}
 		}
-		catch (const char* errorName)
+		catch (const char *errorName)
 		{
 			cout << errorName;
 		}
