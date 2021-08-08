@@ -1,6 +1,6 @@
 ## ASM 1 - CPP Advanced - FPT University
 ### Author: Le Duc Hoa - HoaLDCE140469@fpt.edu.vn
-
+### Link github [here](https://github.com/HoaLD20/CPP/tree/main/CPP201x_Project_2_hoaldFX02033) !!! 
 > ### Overview project and ***Function***
 
 In this project, we will implement settings function for Display, <br>
