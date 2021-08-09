@@ -13,6 +13,7 @@ List<T>::~List()
 template <class T>
 void List<T>::add(T const &item)
 {
+    //check
     elements_[index] = item;
     index++;
 }
@@ -20,6 +21,7 @@ void List<T>::add(T const &item)
 template <class T>
 void List<T>::changeElement(T const &item, int pos)
 {
+    //check
     delete elements_[pos]; //Giai phong vung nho cap phat
     elements_[pos] = item;
 }

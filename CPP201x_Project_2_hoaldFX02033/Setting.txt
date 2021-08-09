@@ -8,3 +8,5 @@ hoa,test@gg.gg,77777777,77777,77777; General:0,29;Sound:1,1,1,1;Display:1,1,1
 hoadepzai,hoa@gg.gg,99999999,90,90; General:31,29;Sound:1,1,1,1;Display:1,1,1
 meow,meow@gg.gg,51236547,300,300; General:31,25;Sound:1,1,1,1;Display:1,1,1
 test,test@gg.gg,10101010,10,10; General:31,29;Sound:1,1,1,1;Display:1,1,1
+test,aaaa@gg.gg,98765432,500,500; General:1,1;Sound:1,1,1,1;Display:5,5,5
+hoaldce,gggg@ggg.ggg,52525252,2,2; General:1,1;Sound:1,1,1,1;Display:2,2,2

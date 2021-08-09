@@ -296,6 +296,7 @@ string ConvertSelectionToData(vector<CommonInfo> list, int selection)
 
 void NhapThongTinCaiDat_Display()
 {
+	//
 	if (sound.size() < 100)
 	{
 		/*Check size of list when data overloading*/
@@ -303,7 +304,7 @@ void NhapThongTinCaiDat_Display()
 		do
 		{
 			cout << " NHAP THONG TIN DISPLAY, XE SO " << display.size() + 1 << endl;
-
+			//new sound and gen here for default
 			Display disp;		//Bien de luu thong tin doi tuong Display dang nhap
 			Setting *p;			//Con tro tro den vung nho co gia tri giong voi bien 'disp'
 			bool found = false; //true: tai khoan ton tai,  false: tai khoan khong ton tai
@@ -342,6 +343,7 @@ void NhapThongTinCaiDat_Display()
 			{
 				p = new Display(disp); //Cap phat vung nho co gia tri bang voi 'disp'
 				display.add(p);		   //Them p vao mang elements_ cua list display
+									   // add default sound and gen
 			}
 
 			display.Sap_Xep();
@@ -797,25 +799,6 @@ void XuatThongTinTatCaCaiDat()
 	//Xuat thong tin chung: Ten chu xe, mscn, email, odo, km bao hanh
 	//Neu MSCN co ton tai thi in ra thong tin chung va chi in 1 lan
 
-	/*
-
-
-	if (foundDis == true)
-	{
-		display.get(locationDis)->xuatThongTinChung();
-	}
-	else if (foundSou == true)
-	{
-		sound.get(locationSou)->xuatThongTinChung();
-	}
-	else
-	{
-		general.get(locationGen)->xuatThongTinChung();
-	}
-
-
-	*/
-
 	//Xuat thong tin theo tung chuc nang
 	//Neu du lieu chua cai dat thi thong bao "chua cai dat thong tin"
 
@@ -828,18 +811,14 @@ void XuatThongTinTatCaCaiDat()
 		{
 			for (int i = 0; i < display.size(); i++)
 			{
+
 				if (display.get(i)->layTenChuXe().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
 				{
 					display.get(i)->xuatThongTinChung();
-					for (int j = 0; j < display.size(); ++j)
-					{
-						if (display.get(i)->layTenChuXe().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
-						{
-							display.get(j)->xuatThongTinRieng();
-							cout << "\n\t" << string(20, '*') << endl;
-						}
-						break;
-					}
+					display.get(i)->xuatThongTinRieng();
+					sound.get(i)->xuatThongTinRieng();
+					general.get(i)->xuatThongTinRieng();
+					cout << "\n\t" << string(20, '*') << endl;
 				}
 			}
 		}
@@ -848,66 +827,6 @@ void XuatThongTinTatCaCaiDat()
 			cout << setiosflags(ios::left) << setw(23) << "LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
 			cout << setiosflags(ios::left) << setw(23) << "SCREEN LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
 			cout << setiosflags(ios::left) << setw(23) << "TAPLO LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-		}
-
-		cout << " --- Thong tin Sound ---\n";
-
-		if (foundSou == true)
-		{
-			//in data cua Sound
-			for (int i = 0; i < sound.size(); i++)
-			{
-
-				if (sound.get(i)->layTenChuXe().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
-				{
-					sound.get(i)->xuatThongTinChung();
-					for (int j = 0; j < sound.size(); ++j)
-					{
-						if (sound.get(j)->layTenChuXe().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
-						{
-							sound.get(j)->xuatThongTinRieng();
-						}
-						cout << "\n\t" << string(20, '*') << endl;
-
-						break;
-					}
-				}
-			}
-		}
-		else
-		{
-			cout << setiosflags(ios::left) << setw(23) << "MEDIA LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-			cout << setiosflags(ios::left) << setw(23) << "CALL LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-			cout << setiosflags(ios::left) << setw(23) << "NAVIGATION LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-			cout << setiosflags(ios::left) << setw(23) << "NOTIFICATION LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-		}
-
-		cout << " --- Thong tin General ---\n";
-
-		if (foundGen == true)
-		{
-			//in data cua General
-			for (int i = 0; i < general.size(); i++)
-			{
-				if (general.get(i)->layTenChuXe().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
-				{
-					general.get(i)->xuatThongTinChung();
-					for (int j = 0; j < general.size(); ++j)
-					{
-						if (general.get(j)->layTenChuXe().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
-						{
-							general.get(j)->xuatThongTinRieng();
-						}
-						cout << "\n\t" << string(20, '*') << endl;
-						break;
-					}
-				}
-			}
-		}
-		else
-		{
-			cout << setiosflags(ios::left) << setw(23) << "TIME ZONE" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-			cout << setiosflags(ios::left) << setw(23) << "LANGUAGE" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
 		}
 	}
 	else
@@ -917,7 +836,12 @@ void XuatThongTinTatCaCaiDat()
 		cout << " --- Thong tin Display ---\n";
 		if (foundDis == true)
 		{
+			display.get(locationDis)->xuatThongTinChung();
 			display.get(locationDis)->xuatThongTinRieng(); //In thong tin rieng cua list display
+			sound.get(locationSou)->xuatThongTinRieng(); //In thong tin rieng cua list sound
+			general.get(locationGen)->xuatThongTinRieng(); //In thong tin rieng cua list general
+
+
 		}
 		else
 		{
@@ -926,29 +850,7 @@ void XuatThongTinTatCaCaiDat()
 			cout << setiosflags(ios::left) << setw(23) << "TAPLO LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
 		}
 
-		cout << " --- Thong tin Sound ---\n";
-		if (foundSou == true)
-		{
-			sound.get(locationSou)->xuatThongTinRieng(); //In thong tin rieng cua list sound
-		}
-		else
-		{
-			cout << setiosflags(ios::left) << setw(23) << "MEDIA LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-			cout << setiosflags(ios::left) << setw(23) << "CALL LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-			cout << setiosflags(ios::left) << setw(23) << "NAVIGATION LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-			cout << setiosflags(ios::left) << setw(23) << "NOTIFICATION LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-		}
-
-		cout << " --- Thong tin General ---\n";
-		if (foundGen == true)
-		{
-			general.get(locationGen)->xuatThongTinRieng(); //In thong tin rieng cua list general
-		}
-		else
-		{
-			cout << setiosflags(ios::left) << setw(23) << "TIME ZONE" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-			cout << setiosflags(ios::left) << setw(23) << "LANGUAGE" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
-		}
+	
 	}
 	cout << endl;
 	cout << endl
