@@ -514,6 +514,7 @@ void XuatThongTinTatCaCaiDat()
 	char continues = 'n';
 	bool found;		  //true: tim thay;  false: khong tim thay
 	int position = 0; //Vi tri tim thay ten hoac ma so ca nhan trung khop trong mang setting[]
+	string noInfo = "chua cai dat thong tin";
 
 	do
 	{
@@ -599,15 +600,45 @@ void XuatThongTinTatCaCaiDat()
 
 	} while (continues == 'y');
 
-	//Xuat thong tin chung: Ten chu xe, mscn, email, odo, km bao hanh
-	setting[position]->xuatThongTinChung();
-	setting[position]->xuatThongTinRieng();
-
+	if (selection == "1")
+	{
+		/*show theo ho ten*/
+		if (found == true)
+		{
+			for (int i = 0; i < setting.size(); i++)
+			{
+				if (setting[i]->layTenChuXe().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+				{
+					setting[i]->xuatThongTinChung();
+					for (int j = 0; j < setting.size(); ++j)
+					{
+						if (setting[i]->layTenChuXe().compare(keyOrName) == 0) //Neu 2 MSCN trung khop thi luu vi tri hien tai, tra ve true
+						{
+							setting[j]->xuatThongTinRieng();
+							cout << "\n\t" << string(20, '*') << endl;
+						}
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			cout << setiosflags(ios::left) << setw(23) << "LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "SCREEN LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+			cout << setiosflags(ios::left) << setw(23) << "TAPLO LIGHT LEVEL" << setw(2) << ":" << resetiosflags(ios::left) << noInfo << endl;
+		}
+	}
+	else
+	{
+		/*Display data follow personal key*/
+		setting[position]->xuatThongTinChung();
+		setting[position]->xuatThongTinRieng();
+	}
 	cout << endl;
 	cout << endl
 		 << "Press Enter to continue...";
 	cin.ignore(numeric_limits<streamsize>::max(), '\n');
-	
 }
 
 //Loai bo khoang trang trong chuoi
