@@ -1,1 +1,3 @@
 An An,anan@123.com,12345678,23,23; General:1,1;Sound:1,1,1,1;Display:3,3,3
+hoa,hoa@gg.gg,11111111,10,10; General:1,1;Sound:1,1,1,1;Display:1,1,1
+hoa,hoa@gg.gg,22222222,2,2; General:2,2;Sound:1,1,1,1;Display:1,1,1

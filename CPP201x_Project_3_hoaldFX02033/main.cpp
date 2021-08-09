@@ -434,8 +434,9 @@ void downloadLanguage()
 	while (!f.eof())
 	{
 		f.getline(c, 255);
-		lang.setNumber(explode(c, '/')[0]); //Phan tu dau cua mang vector sau khi explode() la number cua language
-		lang.setName(explode(c, '/')[1]);	//Phan tu thu 2 cua mang vector sau khi explode() la number cua language
+		// lang.setNumber(explode(c, '/')[0]); //Phan tu dau cua mang vector sau khi explode() la number cua language
+		lang.setNumber("");				  //Phan tu dau cua mang vector sau khi explode() la number cua language
+		lang.setName(explode(c, '/')[1]); //Phan tu thu 2 cua mang vector sau khi explode() la number cua language
 		languageList.push_back(lang);
 	}
 
@@ -519,9 +520,10 @@ void XuatThongTinTatCaCaiDat()
 		cout << "\n\tXUAT THONG TIN THEO:\n";
 		cout << " 1. Ten chu xe\n";
 		cout << " 2. Ma so ca nhan\n";
+		cout << " 0. Thoat\n";
 		cout << " Lua chon cua ban la: ";
 		cin >> selection;
-		if (selection.length() == 1 && selection[0] >= 49 && selection[0] <= 50)
+		if (selection.length() == 1 && selection[0] >= 48 && selection[0] <= 50)
 		{
 			break;
 		}
@@ -533,9 +535,17 @@ void XuatThongTinTatCaCaiDat()
 	{
 		found = false;
 		if (selection == "1")
+		{
 			cout << "\n\t NHAP TEN CHU XE: ";
-		else
+		}
+		else if (selection == "2")
+		{
 			cout << "\n\t NHAP MA SO CA NHAN: ";
+		}
+		else if (selection == "0")
+		{
+			return;
+		}
 		cin.ignore();
 		getline(cin, keyOrName);
 
