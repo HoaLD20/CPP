@@ -296,178 +296,206 @@ string ConvertSelectionToData(vector<CommonInfo> list, int selection)
 
 void NhapThongTinCaiDat_Display()
 {
-	char continues = 'n';
-	do
+	if (sound.size() < 100)
 	{
-		cout << " NHAP THONG TIN DISPLAY, XE SO " << display.size() + 1 << endl;
+		/*Check size of list when data overloading*/
+		char continues = 'n';
+		do
+		{
+			cout << " NHAP THONG TIN DISPLAY, XE SO " << display.size() + 1 << endl;
 
-		Display disp;		//Bien de luu thong tin doi tuong Display dang nhap
-		Setting *p;			//Con tro tro den vung nho co gia tri giong voi bien 'disp'
-		bool found = false; //true: tai khoan ton tai,  false: tai khoan khong ton tai
+			Display disp;		//Bien de luu thong tin doi tuong Display dang nhap
+			Setting *p;			//Con tro tro den vung nho co gia tri giong voi bien 'disp'
+			bool found = false; //true: tai khoan ton tai,  false: tai khoan khong ton tai
 
-		disp.nhapThongTin();
-		/**
+			disp.nhapThongTin();
+			/**
 		 ** Show notification when personal key found or not found 
 		*/
-		//Tim MSCN trung khop voi MSCN vua nhap
-		for (int i = 0; i < display.size(); ++i)
-		{
-			if (display.get(i)->layMaSoCaNhan().compare(disp.layMaSoCaNhan()) == 0)
+			//Tim MSCN trung khop voi MSCN vua nhap
+			for (int i = 0; i < display.size(); ++i)
 			{
-				cout << "\n\tThis car already exist, data will be overriten !" << endl;
-				break;
+				if (display.get(i)->layMaSoCaNhan().compare(disp.layMaSoCaNhan()) == 0)
+				{
+					cout << "\n\tThis car already exist, data will be overriten !" << endl;
+					break;
+				}
 			}
-		}
-		if (found == false)
-		{
-			cout << "\n\tNew car will be appended to your list!" << endl;
-		}
-		//Nhap thong tin chung
-		ThayDoiCaiDatChungVaKhoiTaoDuLieu(disp, 1); //1: Doi tuong thuoc lop Display
-		//Tim MSCN trung khop voi MSCN vua nhap
-		for (int i = 0; i < display.size(); ++i)
-		{
-			if (display.get(i)->layMaSoCaNhan().compare(disp.layMaSoCaNhan()) == 0)
+			if (found == false)
 			{
-				p = new Display(disp);		 //Cap phat vung nho co gia tri bang voi 'disp'
-				display.changeElement(p, i); //Thay doi gia tri cua bien con tro trong list display tai vi tri i
-				found = true;
-				break;
+				cout << "\n\tNew car will be appended to your list!" << endl;
 			}
-		}
-		if (found == false)
-		{
-			p = new Display(disp); //Cap phat vung nho co gia tri bang voi 'disp'
-			display.add(p);		   //Them p vao mang elements_ cua list display
-		}
+			//Nhap thong tin chung
+			ThayDoiCaiDatChungVaKhoiTaoDuLieu(disp, 1); //1: Doi tuong thuoc lop Display
+			//Tim MSCN trung khop voi MSCN vua nhap
+			for (int i = 0; i < display.size(); ++i)
+			{
+				if (display.get(i)->layMaSoCaNhan().compare(disp.layMaSoCaNhan()) == 0)
+				{
+					p = new Display(disp);		 //Cap phat vung nho co gia tri bang voi 'disp'
+					display.changeElement(p, i); //Thay doi gia tri cua bien con tro trong list display tai vi tri i
+					found = true;
+					break;
+				}
+			}
+			if (found == false)
+			{
+				p = new Display(disp); //Cap phat vung nho co gia tri bang voi 'disp'
+				display.add(p);		   //Them p vao mang elements_ cua list display
+			}
 
-		display.Sap_Xep();
+			display.Sap_Xep();
 
-		cout << "TIEP TUC XE SO " << display.size() + 1 << " ? (y/n): ";
-		cin >> continues;
-		cout << endl;
-	} while (continues == 'y');
+			cout << "TIEP TUC XE SO " << display.size() + 1 << " ? (y/n): ";
+			cin >> continues;
+			cout << endl;
+		} while (continues == 'y');
+	}
+	else
+	{
+		cout << "\n\t Can not insert more data - Storage overloading !!!";
+		return;
+	}
 }
 void NhapThongTinCaiDat_Sound()
 {
-	char continues = 'n';
-	do
+	/*Check size of list when data overloading*/
+	if (sound.size() < 100)
 	{
-		cout << " NHAP THONG TIN SOUND, XE SO " << sound.size() + 1 << endl;
+		char continues = 'n';
+		do
+		{
+			cout << " NHAP THONG TIN SOUND, XE SO " << sound.size() + 1 << endl;
 
-		bool found = false; //true: tai khoan ton tai,  false: tai khoan khong ton tai
-		Sound snd;
-		Setting *p; //Con tro tro den vung nho co gia tri giong voi bien 'snd'
+			bool found = false; //true: tai khoan ton tai,  false: tai khoan khong ton tai
+			Sound snd;
+			Setting *p; //Con tro tro den vung nho co gia tri giong voi bien 'snd'
 
-		snd.nhapThongTin();
-		/**
+			snd.nhapThongTin();
+			/**
 		 ** Show notification when personal key found or not found 
 		*/
-		//Tim MSCN trung khop voi MSCN vua nhap
-		for (int i = 0; i < sound.size(); ++i)
-		{
-			if (sound.get(i)->layMaSoCaNhan().compare(snd.layMaSoCaNhan()) == 0)
+			//Tim MSCN trung khop voi MSCN vua nhap
+			for (int i = 0; i < sound.size(); ++i)
 			{
-				cout << "\n\tThis car already exist, data will be overriten !" << endl;
-				break;
+				if (sound.get(i)->layMaSoCaNhan().compare(snd.layMaSoCaNhan()) == 0)
+				{
+					cout << "\n\tThis car already exist, data will be overriten !" << endl;
+					break;
+				}
 			}
-		}
-		if (found == false)
-		{
-			cout << "\n\tNew car will be appended to your list!" << endl;
-		}										   //Nhap thong tin cho bien snd
-		ThayDoiCaiDatChungVaKhoiTaoDuLieu(snd, 2); //2: Doi tuong thuoc lop Sound
-
-		//Tim MSCN trung khop voi MSCN vua nhap
-		for (int i = 0; i < sound.size(); ++i)
-		{
-			if (sound.get(i)->layMaSoCaNhan().compare(snd.layMaSoCaNhan()) == 0) //So sanh 2 ma so ca nhan
+			if (found == false)
 			{
-				p = new Sound(snd);		   //Cap phat vung nho co gia tri bang voi 'snd'
-				sound.changeElement(p, i); //Thay doi gia tri phan tu thu 'i' trong mang elements_ cua list 'sound' bang 'snd'
-				found = true;
-				break;
+				cout << "\n\tNew car will be appended to your list!" << endl;
+			}										   //Nhap thong tin cho bien snd
+			ThayDoiCaiDatChungVaKhoiTaoDuLieu(snd, 2); //2: Doi tuong thuoc lop Sound
+
+			//Tim MSCN trung khop voi MSCN vua nhap
+			for (int i = 0; i < sound.size(); ++i)
+			{
+				if (sound.get(i)->layMaSoCaNhan().compare(snd.layMaSoCaNhan()) == 0) //So sanh 2 ma so ca nhan
+				{
+					p = new Sound(snd);		   //Cap phat vung nho co gia tri bang voi 'snd'
+					sound.changeElement(p, i); //Thay doi gia tri phan tu thu 'i' trong mang elements_ cua list 'sound' bang 'snd'
+					found = true;
+					break;
+				}
 			}
-		}
 
-		if (found == false)
-		{
-			p = new Sound(snd); //Cap phat vung nho co gia tri bang voi 'snd'
-			sound.add(p);		//Gan gia tri cho con tro trong mang "elements"_ list "sound"
-		}
+			if (found == false)
+			{
+				p = new Sound(snd); //Cap phat vung nho co gia tri bang voi 'snd'
+				sound.add(p);		//Gan gia tri cho con tro trong mang "elements"_ list "sound"
+			}
 
-		sound.Sap_Xep(); //Sap xep mang elements_ cua list "sound" theo thu tu tang dan MSCN
+			sound.Sap_Xep(); //Sap xep mang elements_ cua list "sound" theo thu tu tang dan MSCN
 
-		cout << "TIEP TUC XE SO " << sound.size() + 1 << " ? (y/n): ";
-		cin >> continues;
-		cout << endl;
-	} while (continues == 'y');
+			cout << "TIEP TUC XE SO " << sound.size() + 1 << " ? (y/n): ";
+			cin >> continues;
+			cout << endl;
+		} while (continues == 'y');
+	}
+	else
+	{
+		cout << "\n\t Can not insert more data - Storage overloading !!!";
+		return;
+	}
 }
 void NhapThongTinCaiDat_General()
 {
-	int selection;
-	char continues = 'n';
 
-	do
+	if (sound.size() < 100)
 	{
-		cout << " NHAP THONG TIN GENERAL, XE SO " << general.size() + 1 << endl;
+		int selection;
+		char continues = 'n';
+		/*Check size of list when data overloading*/
 
-		General gen;		//Bien de luu thong tin doi tuong General dang nhap
-		Setting *p;			//Con tro tro den vung nho co gia tri giong voi bien 'gen'
-		gen.nhapThongTin(); //Nhap thong tin chung
-		bool found = false; //true: tai khoan ton tai,  false: tai khoan khong ton tai
+		do
+		{
+			cout << " NHAP THONG TIN GENERAL, XE SO " << general.size() + 1 << endl;
 
-		/**
+			General gen;		//Bien de luu thong tin doi tuong General dang nhap
+			Setting *p;			//Con tro tro den vung nho co gia tri giong voi bien 'gen'
+			gen.nhapThongTin(); //Nhap thong tin chung
+			bool found = false; //true: tai khoan ton tai,  false: tai khoan khong ton tai
+
+			/**
 		 ** Show notification when personal key found or not found 
 		*/
-		//Tim MSCN trung khop voi MSCN vua nhap
-		for (int i = 0; i < general.size(); ++i)
-		{
-			if (general.get(i)->layMaSoCaNhan().compare(gen.layMaSoCaNhan()) == 0)
+			//Tim MSCN trung khop voi MSCN vua nhap
+			for (int i = 0; i < general.size(); ++i)
 			{
-				cout << "\n\tThis car already exist, data will be overriten !" << endl;
-				break;
+				if (general.get(i)->layMaSoCaNhan().compare(gen.layMaSoCaNhan()) == 0)
+				{
+					cout << "\n\tThis car already exist, data will be overriten !" << endl;
+					break;
+				}
 			}
-		}
-		if (found == false)
-		{
-			cout << "\n\tNew car will be appended to your list!" << endl;
-		}
-
-		ThayDoiCaiDatChungVaKhoiTaoDuLieu(gen, 3); //3: Doi tuong thuoc lop General
-
-		cout << "\nMOI BAN CHON TIME ZONE\n";
-		selection = ChonTimeZoneVaLanguage(timezoneList); //Lua chon timeZone
-		gen.set_timeZone(to_string(selection - 1));		  //Nhap gia tri timeZone cho doi tuong
-		cout << "Your time zone is: " << ConvertSelectionToData(timezoneList, selection - 1) << endl;
-		cout << "\nMOI BAN CHON LANGUAGE\n";
-		selection = ChonTimeZoneVaLanguage(languageList); //Lua chon language
-		gen.set_language(to_string(selection - 1));		  //Nhap gia tri language cho doi tuong
-		cout << "Your language is: " << ConvertSelectionToData(languageList, selection - 1) << endl;
-
-		//Tim MSCN trung khop voi MSCN vua nhap
-		for (int i = 0; i < general.size(); ++i)
-		{
-			if (general.get(i)->layMaSoCaNhan().compare(gen.layMaSoCaNhan()) == 0)
+			if (found == false)
 			{
-				p = new General(gen);		 //Cap phat vung nho co gia tri bang voi 'gen'
-				general.changeElement(p, i); //Thay doi gia tri cua bien con tro trong list general tai vi tri i
-				found = true;
-				break;
+				cout << "\n\tNew car will be appended to your list!" << endl;
 			}
-		}
-		if (found == false)
-		{
-			p = new General(gen); //Cap phat vung nho co gia tri bang voi 'gen'
-			general.add(p);		  //Them p vao mang elements_ cua list general
-		}
 
-		general.Sap_Xep(); //Sap xep mang elements_ cua list "general" theo thu tu tang dan MSCN
+			ThayDoiCaiDatChungVaKhoiTaoDuLieu(gen, 3); //3: Doi tuong thuoc lop General
 
-		cout << "TIEP TUC XE SO " << general.size() + 1 << " ? (y/n): ";
-		cin >> continues;
-		cout << endl;
-	} while (continues == 'y');
+			cout << "\nMOI BAN CHON TIME ZONE\n";
+			selection = ChonTimeZoneVaLanguage(timezoneList); //Lua chon timeZone
+			gen.set_timeZone(to_string(selection - 1));		  //Nhap gia tri timeZone cho doi tuong
+			cout << "Your time zone is: " << ConvertSelectionToData(timezoneList, selection - 1) << endl;
+			cout << "\nMOI BAN CHON LANGUAGE\n";
+			selection = ChonTimeZoneVaLanguage(languageList); //Lua chon language
+			gen.set_language(to_string(selection - 1));		  //Nhap gia tri language cho doi tuong
+			cout << "Your language is: " << ConvertSelectionToData(languageList, selection - 1) << endl;
+
+			//Tim MSCN trung khop voi MSCN vua nhap
+			for (int i = 0; i < general.size(); ++i)
+			{
+				if (general.get(i)->layMaSoCaNhan().compare(gen.layMaSoCaNhan()) == 0)
+				{
+					p = new General(gen);		 //Cap phat vung nho co gia tri bang voi 'gen'
+					general.changeElement(p, i); //Thay doi gia tri cua bien con tro trong list general tai vi tri i
+					found = true;
+					break;
+				}
+			}
+			if (found == false)
+			{
+				p = new General(gen); //Cap phat vung nho co gia tri bang voi 'gen'
+				general.add(p);		  //Them p vao mang elements_ cua list general
+			}
+
+			general.Sap_Xep(); //Sap xep mang elements_ cua list "general" theo thu tu tang dan MSCN
+
+			cout << "TIEP TUC XE SO " << general.size() + 1 << " ? (y/n): ";
+			cin >> continues;
+			cout << endl;
+		} while (continues == 'y');
+	}
+	else
+	{
+		cout << "\n\t Can not insert more data - Storage overloading !!!";
+		return;
+	}
 }
 
 void XuatThongTinCaiDat()
