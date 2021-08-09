@@ -20,6 +20,8 @@ void General::nhapThongTin()
 	Setting::nhapThongTin();
 }
 
+
+
 void General::xuatThongTin()
 {
 	Setting::xuatThongTin();

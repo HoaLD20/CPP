@@ -35,9 +35,9 @@ public:
 	string *layThongTinRieng(string *array); //Lay thong tin rieng cua lop con ke thua
 	void thayDoiThongTinRieng(int number);	 //Thay doi thong tin rieng cua lop
 private:
-	int light_level;
-	int screen_light_level;
-	int taplo_light_level;
+	int light_level = 5;
+	int screen_light_level = 4;
+	int taplo_light_level = 3;
 };
 
 #endif /* DISPLAY_H_ */

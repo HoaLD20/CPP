@@ -27,6 +27,15 @@ void Sound::nhapThongTin()
 	set_notification_level(checkLevel("NOTIFICATION LEVEL: "));
 }
 
+void Sound::DefaultInformation()
+{
+	
+	set_media_level(1);
+	set_call_level(1);
+	set_navi_level(1);
+	set_notification_level(1);
+}
+
 void Sound::xuatThongTin()
 {
 	Setting::xuatThongTin();

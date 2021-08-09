@@ -14,6 +14,7 @@ public:
 	Sound(const Sound &u);
 	~Sound();
 	void nhapThongTin();
+	void DefaultInformation();
 	void xuatThongTin();
 	int get_media_level();
 	int get_call_level();
