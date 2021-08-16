@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Quiz_Funix"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix7">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix7" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix7"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix7/fast">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix7" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix7/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix6">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix6" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix6"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix6/fast">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix6" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix6/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix5">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix5" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix5"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix5/fast">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix5" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix5/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix/fast">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="quiz_5_7">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/quiz_5_7" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 quiz_5_7"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="quiz_5_7/fast">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/quiz_5_7" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 quiz_5_7/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix2">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix2"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix2/fast">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix2" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix2/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix3">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix3" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix3"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix3/fast">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix3" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix3/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix4">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix4" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix4"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Quiz_Funix4/fast">
+				<Option output="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Quiz_Funix4" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/c++/9"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/9"/>
+					<Add directory="/usr/include/c++/9/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/9/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 Quiz_Funix4/fast"/>
+					<CompileFile command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j8 -f &quot;/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/home/hoald/Documents/CPP/Quiz_Funix/print_1.cpp">
+			<Option target="Quiz_Funix6"/>
+		</Unit>
+		<Unit filename="/home/hoald/Documents/CPP/Quiz_Funix/quiz_2_8.cpp">
+			<Option target="Quiz_Funix"/>
+		</Unit>
+		<Unit filename="/home/hoald/Documents/CPP/Quiz_Funix/quiz_3_1.cpp">
+			<Option target="Quiz_Funix3"/>
+		</Unit>
+		<Unit filename="/home/hoald/Documents/CPP/Quiz_Funix/quiz_3_3.cpp">
+			<Option target="Quiz_Funix2"/>
+		</Unit>
+		<Unit filename="/home/hoald/Documents/CPP/Quiz_Funix/quiz_4_1.cpp">
+			<Option target="Quiz_Funix7"/>
+		</Unit>
+		<Unit filename="/home/hoald/Documents/CPP/Quiz_Funix/quiz_4_6.cpp">
+			<Option target="Quiz_Funix4"/>
+		</Unit>
+		<Unit filename="/home/hoald/Documents/CPP/Quiz_Funix/quiz_4_7.cpp">
+			<Option target="Quiz_Funix5"/>
+		</Unit>
+		<Unit filename="/home/hoald/Documents/CPP/Quiz_Funix/quiz_5_7.cpp">
+			<Option target="quiz_5_7"/>
+		</Unit>
+		<Unit filename="/home/hoald/Documents/CPP/Quiz_Funix/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

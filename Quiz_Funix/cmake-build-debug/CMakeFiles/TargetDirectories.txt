@@ -1,0 +1,10 @@
+/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/CMakeFiles/Quiz_Funix7.dir
+/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/CMakeFiles/Quiz_Funix6.dir
+/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/CMakeFiles/Quiz_Funix5.dir
+/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/CMakeFiles/Quiz_Funix.dir
+/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/CMakeFiles/quiz_5_7.dir
+/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/CMakeFiles/Quiz_Funix2.dir
+/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/CMakeFiles/Quiz_Funix3.dir
+/home/hoald/Documents/CPP/Quiz_Funix/cmake-build-debug/CMakeFiles/Quiz_Funix4.dir

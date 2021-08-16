@@ -1,0 +1,14 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/hoald/Documents/CPP/Quiz_Funix/print_1.cpp
+iostream
+/home/hoald/Documents/CPP/Quiz_Funix/iostream
+deque
+/home/hoald/Documents/CPP/Quiz_Funix/deque
+
