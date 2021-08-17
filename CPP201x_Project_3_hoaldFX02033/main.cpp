@@ -28,12 +28,51 @@ void downloadLanguage();
 
 void ReadFromFile(); //Ham doc du lieu tu file
 void WriteOnFile();	 //Ham ghi du lieu len file
-
+bool is_empty(std::ifstream &pFile);
 int menu();
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 int main(int argc, char **argv)
 {
+	int length_lang;
+	int length_time;
+	ifstream filestr;
+
+	filestr.open("languages.txt", std::ios::in | std::ios::out | std::ios::app); // open your file
+	filestr.seekg(0, ios::end);													 // put the "cursor" at the end of the file
+	length_lang = filestr.tellg();												 // find the position of the cursor
+	filestr.close();
+
+	filestr.open("timezones.txt", std::ios::in | std::ios::out | std::ios::app); // close your file
+	filestr.seekg(0, ios::end);													 // put the "cursor" at the end of the file
+	length_time = filestr.tellg();												 // find the position of the cursor
+	filestr.close();
+
+	if (length_lang == 0)
+	{
+		fstream f;
+		f.open("languages.txt", std::ios::in | std::ios::out | std::ios::app);
+
+		string data = "1 / Vietnamese";
+		f << data;
+		f.close();
+	}
+	else
+	{
+	}
+	if (length_time == 0)
+	{
+		fstream f;
+		f.open("timezones.txt", std::ios::in | std::ios::out | std::ios::app);
+
+		string data = "(GMT+07:00) /  Bangkok, Hanoi, Jakarta";
+		f << data;
+		f.close();
+	}
+	else
+	{
+	}
+
 	ReadFromFile(); //Doc du lieu tu file
 	downloadLanguage();
 	downloadTimeZone();
@@ -66,7 +105,10 @@ int main(int argc, char **argv)
 
 	return 0;
 }
-
+bool is_empty(std::ifstream &pFile)
+{
+	return pFile.peek() == std::ifstream::traits_type::eof();
+}
 int menu()
 {
 	int selection = 0;
@@ -197,7 +239,7 @@ int isDigits(int maxSelection)
 		{
 			if (!isdigit(n))
 			{
-				cout << "\t(!) Nhap so (0-" << to_string(maxSelection) << ")\n"; //Neu chuoi nhap co ky tu thi thong bao va nhap lai
+				cout << "\t(!) Nhap so (1-" << to_string(maxSelection) << ")\n"; //Neu chuoi nhap co ky tu thi thong bao va nhap lai
 				is_digit = false;
 				break;
 			}
@@ -206,12 +248,12 @@ int isDigits(int maxSelection)
 		if (is_digit == true)
 		{
 			selection = stoi(str_selection);				 //Chuoi nhap khong co ky tu thi ep kieu sang kieu so nguyen
-			if (selection >= 0 && selection <= maxSelection) //Neu lua chon khong nam trong khoang 0-maxSelection thi thong bao va nhap lai
+			if (selection >= 1 && selection <= maxSelection) //Neu lua chon khong nam trong khoang 0-maxSelection thi thong bao va nhap lai
 			{
 				return selection;
 			}
 			else
-				cout << "\t(!) Nhap so (0-" << to_string(maxSelection) << ")\n";
+				cout << "\t(!) Nhap so (1-" << to_string(maxSelection) << ")\n";
 		}
 	} while (true);
 }
@@ -222,11 +264,11 @@ int ChonTimeZoneVaLanguage(vector<CommonInfo> list)
 {
 	for (size_t i = 0; i < list.size(); ++i)
 	{
-		cout << setw(2) << i << ":" << setw(16) << list[i].getNumber()
+		cout << setw(2) << i+1 << ":" << setw(16) << list[i].getNumber()
 			 << setiosflags(ios::left) << list[i].getName() << resetiosflags(ios::left) << endl; //Dinh dang thong tin xuat
 	}
 
-	return isDigits(int(list.size()) - 1); //Chay ham isDigits() de tra ve gia tri selection cua TimeZone hoac Language; tham so la gioi han lon nhat cua lua chon
+	return isDigits(int(list.size())); //Chay ham isDigits() de tra ve gia tri selection cua TimeZone hoac Language; tham so la gioi han lon nhat cua lua chon
 }
 
 void NhapThongTinCaiDat_General()
@@ -388,17 +430,26 @@ void downloadTimeZone()
 	char c[256];
 	CommonInfo time; //Luu gia tri tam thoi khi doc thong tin tu file
 
-	f.open("timezones.txt");
-
-	while (!f.eof())
+	try
 	{
-		f.getline(c, 255);
-		time.setNumber(explode(c, '/')[0]); //Phan tu dau cua mang vector sau khi explode() la number cua timeZone
-		time.setName(explode(c, '/')[1]);	//Phan tu thu 2 cua mang vector sau khi explode() la name cua timeZone
-		timezoneList.push_back(time);		//Them phan tu time vao vector<> timezoneList
-	}
+		f.open("timezones.txt", std::ios::in | std::ios::out | std::ios::app);
 
-	f.close();
+		while (!f.eof())
+		{
+			f.getline(c, 255);
+			time.setNumber(explode(c, '/')[0]); //Phan tu dau cua mang vector sau khi explode() la number cua timeZone
+			time.setName(explode(c, '/')[1]);	//Phan tu thu 2 cua mang vector sau khi explode() la name cua timeZone
+			timezoneList.push_back(time);		//Them phan tu time vao vector<> timezoneList
+		}
+
+		f.close();
+	}
+	catch (const std::exception &e)
+
+	{
+		cout << "File not found !!! " << endl;
+		std::cerr << e.what() << '\n';
+	}
 
 	CommonInfo tmp;
 	int timeAfter;	//Thoi gian cua chuoi nam sau trong mang
@@ -426,21 +477,31 @@ void downloadTimeZone()
 void downloadLanguage()
 {
 	ifstream f;
+
 	char c[256];
 	CommonInfo lang;
 
-	f.open("languages.txt");
-
-	while (!f.eof())
+	try
 	{
-		f.getline(c, 255);
-		// lang.setNumber(explode(c, '/')[0]); //Phan tu dau cua mang vector sau khi explode() la number cua language
-		lang.setNumber("");				  //Phan tu dau cua mang vector sau khi explode() la number cua language
-		lang.setName(explode(c, '/')[1]); //Phan tu thu 2 cua mang vector sau khi explode() la number cua language
-		languageList.push_back(lang);
-	}
 
-	f.close();
+		f.open("languages.txt", std::ios::in | std::ios::out | std::ios::app);
+
+		while (!f.eof())
+		{
+			f.getline(c, 255);
+			// lang.setNumber(explode(c, '/')[0]); //Phan tu dau cua mang vector sau khi explode() la number cua language
+			lang.setNumber("");				  //Phan tu dau cua mang vector sau khi explode() la number cua language
+			lang.setName(explode(c, '/')[1]); //Phan tu thu 2 cua mang vector sau khi explode() la number cua language
+			languageList.push_back(lang);
+		}
+
+		f.close();
+	}
+	catch (const std::exception &e)
+	{
+		cout << "File not found !!! " << endl;
+		std::cerr << e.what() << '\n';
+	}
 
 	CommonInfo tmp;
 

@@ -1,3 +1,6 @@
 An An,anan@123.com,12345678,23,23; General:1,1;Sound:1,1,1,1;Display:3,3,3
 hoa,hoa@gg.gg,11111111,10,10; General:1,1;Sound:1,1,1,1;Display:1,1,1
 hoa,hoa@gg.gg,22222222,2,2; General:2,2;Sound:1,1,1,1;Display:1,1,1
+hoa dep zai,hoa@gmail.com,55555555,2,2; General:1,1;Sound:1,1,1,1;Display:2,2,2
+hoa display,abc@gmail.com,66666666,6,6; General:1,1;Sound:1,1,1,1;Display:5,5,5
+111,1111@gmail.com,56565656,2,2; General:1,1;Sound:1,1,1,1;Display:1,1,1

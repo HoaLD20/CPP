@@ -10,7 +10,7 @@ Setting::Setting()
 	general = new General;
 	sound = new Sound;
 	disp = new Display;
-	general->set_language("1");	//Khoi tao gia tri mac dinh
+	general->set_language("1"); //Khoi tao gia tri mac dinh
 	general->set_timeZone("1");
 	sound->set_call_level(1);
 	sound->set_media_level(1);
@@ -21,7 +21,7 @@ Setting::Setting()
 	disp->set_taplo_light_level(1);
 }
 
-Setting::Setting(const Setting& u)
+Setting::Setting(const Setting &u)
 {
 	car_name = u.car_name;
 	personal_key = u.personal_key;
@@ -30,13 +30,15 @@ Setting::Setting(const Setting& u)
 	service_remind = u.service_remind;
 }
 
-Setting::~Setting(){}
+Setting::~Setting() {}
 
-string Setting::getCarName(){
+string Setting::getCarName()
+{
 	return car_name;
 }
 
-string Setting::getPersonalKey(){
+string Setting::getPersonalKey()
+{
 	return personal_key;
 }
 
@@ -45,11 +47,13 @@ string Setting::getEmail()
 	return email;
 }
 
-int Setting::getODO (){
+int Setting::getODO()
+{
 	return odo;
 }
 
-int Setting::getServiceRemind(){
+int Setting::getServiceRemind()
+{
 	return service_remind;
 }
 
@@ -78,22 +82,23 @@ void Setting::setServiceRemind(int data)
 	service_remind = data;
 }
 
-General* Setting::getGeneral()
+General *Setting::getGeneral()
 {
 	return general;
 }
 
-Sound* Setting::getSound()
+Sound *Setting::getSound()
 {
 	return sound;
 }
 
-Display* Setting::getDisplay()
+Display *Setting::getDisplay()
 {
 	return disp;
 }
 
-void Setting::nhapThongTin(){
+void Setting::nhapThongTin()
+{
 	string name;
 
 	cout << "TEN CHU XE: ";
@@ -106,9 +111,10 @@ void Setting::nhapThongTin(){
 	setServiceRemind(serviceRemindInput(getODO()));
 }
 
-void Setting::xuatThongTin(){
+void Setting::xuatThongTin()
+{
 	cout << setw(20) << getCarName() << setw(25) << getEmail() << setw(10) << getPersonalKey()
-		<< setw(10) << getODO() << setw(10) << getServiceRemind();
+		 << setw(10) << getODO() << setw(10) << getServiceRemind();
 }
 
 void Setting::xuatThongTinChung()
@@ -145,7 +151,7 @@ int Setting::layServiceRemind()
 	return getServiceRemind();
 }
 
-void Setting::thayDoiThongTinChung(Setting* u)
+void Setting::thayDoiThongTinChung(Setting *u)
 {
 	setCarName(u->getCarName());
 	setEmail(u->getEmail());
@@ -178,7 +184,7 @@ void Setting::nhapThongTinGeneral(string timezone, string language)
 	getGeneral()->set_language(language);
 }
 
-void Setting::thayDoiThongTinSound(Setting* p)
+void Setting::thayDoiThongTinSound(Setting *p)
 {
 	getSound()->set_call_level(p->getSound()->get_call_level());
 	getSound()->set_media_level(p->getSound()->get_media_level());
@@ -186,14 +192,14 @@ void Setting::thayDoiThongTinSound(Setting* p)
 	getSound()->set_notification_level(p->getSound()->get_notification_level());
 }
 
-void Setting::thayDoiThongTinDisplay(Setting* p)
+void Setting::thayDoiThongTinDisplay(Setting *p)
 {
 	getDisplay()->set_light_level(p->getDisplay()->get_light_level());
 	getDisplay()->set_screen_light_level(p->getDisplay()->get_screen_light_level());
 	getDisplay()->set_taplo_light_level(p->getDisplay()->get_taplo_light_level());
 }
 
-void Setting::thayDoiThongTinGeneral(Setting* p)
+void Setting::thayDoiThongTinGeneral(Setting *p)
 {
 	getGeneral()->set_language(p->getGeneral()->get_language());
 	getGeneral()->set_timeZone(p->getGeneral()->get_timeZone());
@@ -286,6 +292,7 @@ int Setting::getTaploLightLevel()
 
 string emailInput()
 {
+	/*
 	string email;
 	string local_part;	//Ten hop thu
 	string domain;		//Ten mien
@@ -343,9 +350,29 @@ string emailInput()
 			cout << errorName;
 		}
 	} while (true);
+	*/
+	string input;
+	bool check;
+	cout << "EMAIL: ";
+	do
+	{
+		check = true;
+		
+		getline(cin, input);
+		/*alphanumeric or underscore character) or . or + or -, one or more times*/
+		//if (!regex_match(input, regex("[a-zA-Z0-9][a-zA-Z0-9.]{1,28}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,}){1,}")))
+		if (!regex_match(input, regex("^[\\w.+\\-]+@gmail\\.com$")))
+
+		{
+			cout << "Re-enter the email with the format abc@gmail.com: ";
+			check = false;
+		}
+	} while (!check);
+	return input;
 }
 
-string personalKeyInput() {
+string personalKeyInput()
+{
 	string id;
 
 	//Mau gom 8 ky tu so (0-9) lien tiep nhau
@@ -373,7 +400,7 @@ string personalKeyInput() {
 				throw "\t(!) Ma so phai la 8 ky tu so\n";
 			}
 		}
-		catch (const char* errorName)
+		catch (const char *errorName)
 		{
 			cout << errorName;
 		}
@@ -394,7 +421,6 @@ int ODOInput()
 			if (strlen(c) == 0)
 			{
 				throw "\t(!) Nhap ky tu so (0-9)\n";
-
 			}
 			if (strlen(c) > 7)
 			{
@@ -415,14 +441,14 @@ int ODOInput()
 			}
 			return odo;
 		}
-		catch (const char* errorName)
+		catch (const char *errorName)
 		{
 			cout << errorName;
 		}
 	} while (true);
 }
 
-int serviceRemindInput(const int& odo) //Truyen thong tin ODO de so sanh voi km bao hanh
+int serviceRemindInput(const int &odo) //Truyen thong tin ODO de so sanh voi km bao hanh
 {
 	char c[21];
 	int km;
@@ -456,7 +482,7 @@ int serviceRemindInput(const int& odo) //Truyen thong tin ODO de so sanh voi km 
 			}
 			return km;
 		}
-		catch (const char* errorName)
+		catch (const char *errorName)
 		{
 			cout << errorName;
 		}
