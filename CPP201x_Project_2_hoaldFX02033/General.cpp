@@ -3,8 +3,8 @@
 
 General::General() : Setting()
 {
-	timeZone = "";
-	language = "";
+	timeZone = "1";
+	language = "1";
 }
 
 General::General(const General &u) : Setting(u)

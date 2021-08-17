@@ -13,9 +13,12 @@ List<T>::~List()
 template <class T>
 void List<T>::add(T const &item)
 {
-    //check
-    elements_[index] = item;
-    index++;
+    //check index < 100
+    if (index < 100)
+    {
+        elements_[index] = item;
+        index++;
+    }
 }
 
 template <class T>

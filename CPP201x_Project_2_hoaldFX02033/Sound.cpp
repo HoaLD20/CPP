@@ -2,10 +2,10 @@
 
 Sound::Sound() : Setting()
 {
-	media_level = 0;
-	call_level = 0;
-	navi_level = 0;
-	notification_level = 0;
+	media_level = 1;
+	call_level = 1;
+	navi_level = 1;
+	notification_level = 1;
 }
 
 Sound::Sound(const Sound &u) : Setting(u)
@@ -26,6 +26,15 @@ void Sound::nhapThongTin()
 	set_navi_level(checkLevel("NAVIGATION LEVEL: "));
 	set_notification_level(checkLevel("NOTIFICATION LEVEL: "));
 }
+
+/**
+ * * Set default information of Sound 
+ * * set_media_level = 1
+ * * set_call_level = 1
+ * * set_navi_level = 1
+ * * set_notification_level = 1
+ */
+
 
 void Sound::DefaultInformation()
 {

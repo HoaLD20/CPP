@@ -339,24 +339,6 @@ void NhapThongTinCaiDat_Display()
 		{
 			p = new Display(disp); //Cap phat vung nho co gia tri bang voi 'disp'
 			display.add(p);		   //Them p vao mang elements_ cua list display
-
-			/*
-
-			// add default sound and gen
-			Sound snd;
-			snd.DefaultInformation();
-			p = new Sound(snd); //Cap phat vung nho co gia tri bang voi 'snd'
-			sound.add(p);		//Gan gia tri cho con tro trong mang "elements"_ list "sound"
-
-			General gen;					//Bien de luu thong tin doi tuong General dang nhap
-			Setting *p;						//Con tro tro den vung nho co gia tri giong voi bien 'gen'
-			gen.set_timeZone(to_string(1)); //Nhap gia tri timeZone cho doi tuong
-			gen.set_language(to_string(1)); //Nhap gia tri language cho doi tuong
-			p = new General(gen);			//Cap phat vung nho co gia tri bang voi 'gen'
-			general.add(p);					//Them p vao mang elements_ cua list general
-
-
-			*/
 		}
 
 		display.Sap_Xep();

@@ -2,9 +2,9 @@
 
 Display::Display() : Setting()
 {
-	light_level = 5;
-	screen_light_level = 5;
-	taplo_light_level = 5;
+	light_level = 1;
+	screen_light_level = 1;
+	taplo_light_level = 1;
 }
 
 Display::Display(const Display &u) : Setting(u)

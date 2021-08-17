@@ -72,11 +72,24 @@ void Setting::setServiceRemind(int data)
 
 void Setting::nhapThongTin()
 {
+
+
 	string name;
 
 	cout << "TEN CHU XE: ";
 	cin.ignore();
-	getline(cin, name);
+	bool check;
+	do {
+		check = true;
+		getline(cin, name);
+		if (name.length() == 0 ) {			
+			cout << "Car name must be a string. Re-enter: ";
+			check = false;
+		}
+
+	} while (!check);
+
+
 	setCarName(name);
 	setEmail(emailInput());
 	setPersonalKey(personalKeyInput());
