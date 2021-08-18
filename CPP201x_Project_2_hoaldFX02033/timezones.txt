@@ -1,7 +1,7 @@
 (GMT-12:00) /  International Date Line West
 (GMT-11:00) /  Midway Island, Samoa
 (GMT-10:00) /  Hawaii
-(GMT+06:30) /  Yangon (Rangoon) / 
+(GMT+06:30) /  Yangon (Rangoon)
 (GMT+07:00) /  Bangkok, Hanoi, Jakarta
 (GMT+08:00) /  Beijing, Chongqing, Hong Kong, Urumqi
 (GMT+08:00) /  Irkutsk, Ulaanbaatar

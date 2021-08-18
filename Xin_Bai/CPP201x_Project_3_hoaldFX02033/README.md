@@ -26,6 +26,7 @@ Sound, and General. Use arrays to store the following data:
 > ### Run:
   - cd to my project
   - g++ CheckValid.cpp General.cpp main.cpp Display.cpp CommonInfo.cpp Setting.cpp Sound.cpp -o main
+  - g++ CheckValid.cpp CommonInfo.cpp Display.cpp General.cpp main.cpp Setting.cpp Sound.cpp -o main
   - ./main 
 
 

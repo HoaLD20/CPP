@@ -1,6 +1,2 @@
-Setting_hoa 3,hoa3@gmail.com,03030303,3,3/Display_0,0,0/Sound_3,3,3,3/General_+07:00, Vietnamese/
-Setting_hoald,hoald@gg.gg,11111111,1,1/Display_1,1,1/Sound_0,0,0,0/General_+07:00, Vietnamese/
-Setting_hoald,hoald@gg.gg,22222222,2,2/Display_2,2,2/Sound_0,0,0,0/General_+07:00, Vietnamese/
-Setting_hoald,hoald@gg.gg,55555555,5,5/Display_5,5,5/Sound_0,0,0,0/General_+07:00, Vietnamese/
-Setting_hoald,hoald@gg.gg,66666666,6,6/Display_0,0,0/Sound_6,6,6,6/General_+07:00, Vietnamese/
-Setting_meow,meow@gg.gg,12121212,12,12/Display_0,0,0/Sound_0,0,0,0/General_, Korean/
+Setting_11111,1111@gmail.com,11111111,1,1/Display_0,0,0/Sound_0,0,0,0/General_(GMT+06:30) , Javanese/
+Setting_111,111@gmail.com,56565656,5,5/Display_0,0,0/Sound_0,0,0,0/General_(GMT-08:00) , German/

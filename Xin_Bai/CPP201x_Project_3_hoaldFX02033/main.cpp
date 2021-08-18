@@ -76,7 +76,44 @@ bool comparatorLanguage(CommonInfo c1, CommonInfo c2);
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 int main(int argc, char **argv)
 {
+	int length_lang;
+	int length_time;
+	ifstream filestr;
 
+	filestr.open("languages.txt", std::ios::in | std::ios::out | std::ios::app); // open your file
+	filestr.seekg(0, ios::end);													 // put the "cursor" at the end of the file
+	length_lang = filestr.tellg();												 // find the position of the cursor
+	filestr.close();
+
+	filestr.open("timezones.txt", std::ios::in | std::ios::out | std::ios::app); // close your file
+	filestr.seekg(0, ios::end);													 // put the "cursor" at the end of the file
+	length_time = filestr.tellg();												 // find the position of the cursor
+	filestr.close();
+
+	if (length_lang == 0)
+	{
+		fstream f;
+		f.open("languages.txt", std::ios::in | std::ios::out | std::ios::app);
+
+		string data = "1 / Vietnamese";
+		f << data;
+		f.close();
+	}
+	else
+	{
+	}
+	if (length_time == 0)
+	{
+		fstream f;
+		f.open("timezones.txt", std::ios::in | std::ios::out | std::ios::app);
+
+		string data = "(GMT+07:00) /  Bangkok, Hanoi, Jakarta";
+		f << data;
+		f.close();
+	}
+	else
+	{
+	}
 	readDataFromFile(); //doc file setting.txt
 	menu();
 	return 0;
@@ -635,9 +672,8 @@ void downloadTimeZone()
 			cout << "----- SELECT TIMEZONES DATA -----" << endl;
 			if (timezoneList.size() == 0)
 			{
-				while (f.eof() == false)
+				while (!f.eof())
 				{
-					// f.seekg(4, 1);//nhich qua 1 byte de bo dau '('
 					getline(f, str);				 //doc file
 					data_vector = explode(str, '/'); //cat cuoi dua vao dau ')'
 					if (data_vector.size() == 2)
@@ -656,7 +692,7 @@ void downloadTimeZone()
 			{
 				lineNumber++;
 				cout << "  " << lineNumber << ": "
-					 << "(GMT" << item.getNumber() + ")" + item.getName() << "\n"; //in data trong file ra man hinh
+					 << item.getNumber() + item.getName() << "\n"; //in data trong file ra man hinh
 			}
 
 			//nhap lua chon cho Timezone
@@ -664,14 +700,16 @@ void downloadTimeZone()
 			selection = validTimezones();
 
 			//hien lua chon ra man hình
-			cout << "	Timezone: "
-				 << "GMT" << timezoneList[selection - 1].getNumber() << endl;
+			cout << "	Timezone: " << timezoneList[selection - 1].getNumber() << endl;
 			//gan Timezone vao timezoneT de hien Timezone o chuc nang General Setting
 			timezoneT = timezoneList[selection - 1].getNumber();
+
+			
 		}
 	}
-	catch (...) // Throw message when occur error during read file
+	catch (const std::exception &e)
 	{
+		cerr << e.what() << '\n';
 		cerr << "Exception occur when open file!" << endl;
 	}
 	f.close();
@@ -743,8 +781,9 @@ void downloadLanguage()
 			languageT = languageList[selection - 1].getName();
 		}
 	}
-	catch (...) // Throw message when occur error during read file
+	catch (const std::exception &e)
 	{
+		cerr << e.what() << '\n';
 		cerr << "Exception occur when open file!" << endl;
 	}
 
@@ -1135,11 +1174,15 @@ bool comparatorGeneralName(General *general1, General *general2)
 /*
 * Function sort danh sach Timezone bang UTC
 */
+// bool comparatorTimezone(CommonInfo c1, CommonInfo c2)
+// {
+// 	c1.getNumber().replace(3, 1, ",");					  //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
+// 	c2.getNumber().replace(3, 1, ",");					  //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
+// 	return (stoi(c1.getNumber()) < stoi(c2.getNumber())); //so sanh theo so
+// }
 bool comparatorTimezone(CommonInfo c1, CommonInfo c2)
 {
-	c1.getNumber().replace(3, 1, ",");					  //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
-	c2.getNumber().replace(3, 1, ",");					  //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
-	return (stoi(c1.getNumber()) < stoi(c2.getNumber())); //so sanh theo so
+	return (c1.getNumber() > c2.getNumber());
 }
 
 /*
