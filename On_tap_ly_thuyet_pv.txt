@@ -1,0 +1,32 @@
+Thư viện chuẩn C++
+Vector
+	push_back: them cuoi
+	a.insert(a.begin(), 5): them dau
+	
+	a.pop_back: xoa cuoi
+	a.erase(a.begin()): xoa dau
+	
+	a.front: lay dau
+	a.back: lay cuoi
+	
+	a.empty: kiem tra rong
+	a.resize: thay doi kich thuoc
+	a.resize(5, 10): them 5 - a.size() - neu a.size <= 5 thi khong them
+	a.resize(5): a.size > 5 -> giam xuong, a.size < 5 -> them 0 vao
+
+List
+	push_back: them cuoi
+	push_front: them dau
+	pop_back: xoa cuoi
+	pop_front: xoa dau
+	a.reverse(): dao nguoc danh sach
+	size: kich thuoc danh sach
+	a.remove(element): xoa pha tu
+	list<int>::iterator position = myList.begin();
+	position++;
+	a.erase(position): xoa vi tri
+Set
+Stack
+Queue
+Map
+bitset

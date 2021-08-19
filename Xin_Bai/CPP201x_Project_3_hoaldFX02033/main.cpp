@@ -76,6 +76,7 @@ bool comparatorLanguage(CommonInfo c1, CommonInfo c2);
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 int main(int argc, char **argv)
 {
+	printf("\033c");
 	int length_lang;
 	int length_time;
 	ifstream filestr;
@@ -95,8 +96,9 @@ int main(int argc, char **argv)
 		fstream f;
 		f.open("languages.txt", std::ios::in | std::ios::out | std::ios::app);
 
-		string data = "1 / Vietnamese";
-		f << data;
+		string data = "1 / Mandarin (entire branch)\n2 / Spanish\n3 / English\n4 / Hindi\n5 / Arabic\n6 / Portuguese\n7 / Bengali\n8 / Russian\n9 / Japanese\n10 / Punjabi\n11 / German\n12 / Javanese\n13 / Wu(inc.Shanghainese)\n14 / Malay(inc.Indonesian and Malaysian)\n15 / Telugu\n16 / Vietnamese\n17 / Korean\n18 / French\n19 / Marathi\n20 / Tamil\n21 / Urdu\n22 / Turkish\n23 / Italian\n24 / Yue(inc.Cantonese)\n25 / Thai\n26 / Gujarati\n27 / Jin\n28 / Southern Min\n29 / Persian\n30 / Polish\n";
+		f
+			<< data;
 		f.close();
 	}
 	else
@@ -107,17 +109,16 @@ int main(int argc, char **argv)
 		fstream f;
 		f.open("timezones.txt", std::ios::in | std::ios::out | std::ios::app);
 
-		string data = "(GMT+07:00) /  Bangkok, Hanoi, Jakarta";
+		string data = "(GMT-12:00) /  International Date Line West\n(GMT-11:00) /  Midway Island, Samoa\n(GMT-10:00) /  Hawaii\n(GMT-09:00) /  Alaska\n(GMT-08:00) /  Tijuana, Baja California\n(GMT-07:00) /  Chihuahua, La Paz, Mazatlan - New\n(GMT-06:00) /  Guadalajara, Mexico City, Monterrey - New\n(GMT-05:00) /  Eastern Time (US and Canada)\n(GMT-04:00) /  Atlantic Time (Canada)\n(GMT-03:30) /  Newfoundland\n(GMT-02:00) /  Mid-Atlantic\n(GMT-01:00) /  Azores\n(GMT-00:00) /  Monrovia, Reykjavik\n(GMT+01:00) /  Belgrade, Bratislava, Budapest, Ljubljana, Prague\n(GMT+02:00) /  Minsk\n(GMT+03:00) /  Moscow, St. Petersburg, Volgograd\n(GMT+04:00) /  Abu Dhabi, Muscat\n(GMT+04:30) /  Kabul\n(GMT+05:00) /  Tashkent\n(GMT+05:30) /  Chennai, Kolkata, Mumbai, New Delhi\n(GMT+05:45) /  Kathmandu\n(GMT+06:00) /  Astana, Dhaka\n(GMT+06:30) /  Yangon (Rangoon)\n(GMT+07:00) /  Bangkok, Hanoi, Jakarta\n(GMT+08:00) /  Beijing, Chongqing, Hong Kong, Urumqi\n(GMT+08:00) /  Irkutsk, Ulaanbaatar\n(GMT+09:00) /  Seoul\n(GMT+09:30) /  Adelaide\n(GMT+10:00) /  Canberra, Melbourne, Sydney\n(GMT+11:00) /  Magadan, Solomon Islands, New Caledonia\n(GMT+12:00) /  Fiji, Kamchatka, Marshall Is.\n(GMT+13:00) /  Nuku'alofa\n";
 		f << data;
 		f.close();
 	}
 	else
 	{
 	}
-
-	downloadTimeZone();
-	// readDataFromFile(); //doc file setting.txt
-	// menu();
+	//downloadTimeZone();
+	readDataFromFile(); //doc file setting.txt
+	menu();
 	return 0;
 }
 
@@ -873,7 +874,7 @@ void XuatThongTinCaiDat_General(vector<General *> v_general_tmp)
 			 << setw(15) << left << v_general_tmp.at(i)->getPersonalKey()
 			 << setw(15) << left << v_general_tmp.at(i)->getODO()
 			 << setw(25) << left << v_general_tmp.at(i)->getServiceRemind()
-			 << setw(20) << left << "GMT" + v_general_tmp.at(i)->get_timeZone()
+			 << setw(20) << left << v_general_tmp.at(i)->get_timeZone()
 			 << setw(50) << left << v_general_tmp.at(i)->get_language() << endl;
 	}
 }
@@ -914,7 +915,7 @@ void XuatThongTatCaTinCaiDat()
 		//in data cua General
 		cout << setw(20) << "General:" << setw(20) << "Timezone" << setw(50) << "Language" << endl;
 		cout << setw(20) << left << ""
-			 << setw(20) << "GMT" + listGeneral.at(position)->get_timeZone()
+			 << setw(20) << listGeneral.at(position)->get_timeZone()
 			 << setw(50) << listGeneral.at(position)->get_language() << endl;
 
 		cout << endl
@@ -956,7 +957,7 @@ void XuatThongTatCaTinCaiDat()
 			//in data cua General
 			cout << setw(20) << "General:" << setw(20) << "Timezone" << setw(50) << "Language" << endl;
 			cout << setw(20) << left << ""
-				 << setw(20) << "GMT" + listGeneral.at(*it)->get_timeZone()
+				 << setw(20) << listGeneral.at(*it)->get_timeZone()
 				 << setw(50) << listGeneral.at(*it)->get_language() << endl;
 
 			cout << endl
@@ -977,7 +978,7 @@ void readDataFromFile()
 	try
 	{
 		// Open file setting.txt
-		file_in.open("Setting.txt");
+		file_in.open("Setting.txt", std::ios::in | std::ios::out | std::ios::app);
 
 		// ktra xem file co mo hay khong
 		if (file_in.is_open())
@@ -1093,7 +1094,7 @@ void writeDataToFile()
 	try
 	{
 		// open txt file
-		f.open("Setting.txt");
+		f.open("Setting.txt", std::ios::in | std::ios::out | std::ios::app);
 
 		// write data cua Display, setting, sound, general voa file Setting.txt
 		for (int i = 0; i < listSetting.size(); i++)
@@ -1176,13 +1177,19 @@ bool comparatorGeneralName(General *general1, General *general2)
 */
 bool comparatorTimezone(CommonInfo c1, CommonInfo c2)
 {
-	c1.getNumber().replace(7, 1, ","); //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
-	c2.getNumber().replace(7, 1, ",");
+	//c1.getNumber().replace(3, 1, ","); //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
+	//c2.getNumber().replace(3, 1, ","); //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
 
-	cout << c1.getNumber().replace(7, 1, ","); //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
-	cout << c2.getNumber().replace(7, 1, ",");
-	//replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
-	return (stoi(c1.getNumber().replace(7, 1, ",")) < stoi(c2.getNumber().replace(7, 1, ","))); //so sanh theo so
+	c1.setNumber(c1.getNumber().erase(0, 4));
+	c1.setNumber(c1.getNumber().erase(c1.getNumber().length() - 1, c1.getNumber().length()));
+	c1.setNumber(c1.getNumber().replace(3, 1, ","));
+
+	c2.setNumber(c2.getNumber().erase(0, 4));
+	c2.setNumber(c2.getNumber().erase(c1.getNumber().length() - 1, c1.getNumber().length()));
+	c2.setNumber(c2.getNumber().replace(3, 1, ","));
+
+	//cout << c1.getNumber() << endl;
+	return (stoi(c1.getNumber()) < stoi(c2.getNumber())); //so sanh theo so
 }
 // bool comparatorTimezone(CommonInfo c1, CommonInfo c2)
 // {

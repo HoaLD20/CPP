@@ -26,15 +26,27 @@ string validCarName()
 int validInput(string name)
 {
 	string input;
+	bool check = true;
 	do
 	{
+		check = true;
 		getline(cin, input); //lay chuoi de dem regex với \\d+
 		//nhap so nguyen tu 1-9
 		if (!regex_match(input, regex("\\d+")))
 		{
+			check = false;
 			cout << name << " must be a interger. Re-enter: ";
 		}
-	} while (!regex_match(input, regex("\\d+")));
+		if (check)
+		{
+			if (input.length() > 6)
+			{
+				check = false;
+				cout << name << " must be <= 999.999 Re-enter: ";
+			}
+		}
+
+	} while (!check);
 	return stoi(input);
 }
 

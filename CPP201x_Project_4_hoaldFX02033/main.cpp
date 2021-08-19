@@ -83,7 +83,7 @@ int main(int argc, char **argv)
 		fstream f;
 		f.open("languages.txt", std::ios::in | std::ios::out | std::ios::app);
 
-		string data = "1 / Mandarin (entire branch)\n2 /Spanish\n3 / English\n4 / Hindi\n5 / Arabic\n6 / Portuguese\n7 / Bengali\n8 / Russian\n9 / Japanese\n10 / Punjabi\n11 / German\n12 / Javanese\n13 / Wu(inc.Shanghainese)\n14 / Malay(inc.Indonesian and Malaysian)\n15 / Telugu\n16 / Vietnamese\n17 / Korean\n18 / French\n19 / Marathi\n20 / Tamil\n21 / Urdu\n22 / Turkish\n23 / Italian\n24 / Yue(inc.Cantonese)\n25 / Thai\n26 / Gujarati\n27 / Jin\n28 / Southern Min\n29 / Persian\n30 / Polish\n ";
+		string data = "1 / Mandarin (entire branch)\n2 / Spanish\n3 / English\n4 / Hindi\n5 / Arabic\n6 / Portuguese\n7 / Bengali\n8 / Russian\n9 / Japanese\n10 / Punjabi\n11 / German\n12 / Javanese\n13 / Wu(inc.Shanghainese)\n14 / Malay(inc.Indonesian and Malaysian)\n15 / Telugu\n16 / Vietnamese\n17 / Korean\n18 / French\n19 / Marathi\n20 / Tamil\n21 / Urdu\n22 / Turkish\n23 / Italian\n24 / Yue(inc.Cantonese)\n25 / Thai\n26 / Gujarati\n27 / Jin\n28 / Southern Min\n29 / Persian\n30 / Polish\n ";
 		f
 			<< data;
 		f.close();

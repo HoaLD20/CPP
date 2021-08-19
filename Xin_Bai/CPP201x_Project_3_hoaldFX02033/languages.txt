@@ -10,8 +10,8 @@
 10 / Punjabi
 11 / German
 12 / Javanese
-13 / Wu (inc. Shanghainese)
-14 / Malay (inc. Indonesian and Malaysian)
+13 / Wu(inc.Shanghainese)
+14 / Malay(inc.Indonesian and Malaysian)
 15 / Telugu
 16 / Vietnamese
 17 / Korean
@@ -21,7 +21,7 @@
 21 / Urdu
 22 / Turkish
 23 / Italian
-24 / Yue (inc. Cantonese)
+24 / Yue(inc.Cantonese)
 25 / Thai
 26 / Gujarati
 27 / Jin

@@ -1,2 +1,1 @@
-Setting_11111,1111@gmail.com,11111111,1,1/Display_0,0,0/Sound_0,0,0,0/General_(GMT+06:30) , Javanese/
-Setting_111,111@gmail.com,56565656,5,5/Display_0,0,0/Sound_0,0,0,0/General_(GMT-08:00) , German/
+Setting_11111,1111@gmail.com,11111111,1,1/Display_0,0,0/Sound_0,0,0,0/General_(GMT+13:00) , Yue(inc.Cantonese)/

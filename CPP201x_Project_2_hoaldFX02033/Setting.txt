@@ -1,2 +1,0 @@
-hoa1,hoa@gg.gg,11111111,1,1; General:1,1;Sound:1,1,1,1;Display:1,1,1
-hoa_gen,hhgg@gg.gg,55555555,5555,5555; General:30,30;Sound:1,1,1,1;Display:1,1,1

@@ -1,5 +1,5 @@
 1 / Mandarin (entire branch)
-2 /Spanish
+2 / Spanish
 3 / English
 4 / Hindi
 5 / Arabic

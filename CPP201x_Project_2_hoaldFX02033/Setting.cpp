@@ -73,22 +73,22 @@ void Setting::setServiceRemind(int data)
 void Setting::nhapThongTin()
 {
 
-
 	string name;
 
 	cout << "TEN CHU XE: ";
 	cin.ignore();
 	bool check;
-	do {
+	do
+	{
 		check = true;
 		getline(cin, name);
-		if (name.length() == 0 ) {			
+		if (name.length() == 0)
+		{
 			cout << "Car name must be a string. Re-enter: ";
 			check = false;
 		}
 
 	} while (!check);
-
 
 	setCarName(name);
 	setEmail(emailInput());
@@ -161,57 +161,74 @@ void Setting::thayDoiThongTinRieng(int number)
 
 string emailInput()
 {
-	string email;
-	string local_part; //Ten hop thu
-	string domain;	   //Ten mien
-	size_t pos;		   //Vi tri @ trong email, dung de tach ten hop thu va ten mien
+	// string email;
+	// string local_part; //Ten hop thu
+	// string domain;	   //Ten mien
+	// size_t pos;		   //Vi tri @ trong email, dung de tach ten hop thu va ten mien
 
-	//Mau de kiem tra email nhap co dung dinh dang
-	const regex patternMain("^[a-zA-Z0-9][a-zA-Z0-9.]{1,28}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,4}){1,2}$");
-	//Mau de kiem tra phan ten mien
-	const regex patternDomain("^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,4}){1,2}$");
-	//Mau de kiem tra nhap dung ky tu o phan ten hop thu
-	const regex patternRightCharLocal("[^a-zA-Z0-9.]");
-	//Mau de kiem tra ten hop thu khong duoc bat dau bang dau '.'
-	const regex patternFirstDot("^\\.");
-	//Mau de kiem tra ten hop thu khong duoc ket thuc bang dau '.'
-	const regex patternLastDot("\\.$");
-	//Mau de kiem tra co ky tu @ trong chuoi email nhap vao khong
-	const regex patternA("@");
+	// //Mau de kiem tra email nhap co dung dinh dang
+	// const regex patternMain("^[a-zA-Z0-9][a-zA-Z0-9.]{1,28}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,4}){1,2}$");
+	// //Mau de kiem tra phan ten mien
+	// const regex patternDomain("^[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,4}){1,2}$");
+	// //Mau de kiem tra nhap dung ky tu o phan ten hop thu
+	// const regex patternRightCharLocal("[^a-zA-Z0-9.]");
+	// //Mau de kiem tra ten hop thu khong duoc bat dau bang dau '.'
+	// const regex patternFirstDot("^\\.");
+	// //Mau de kiem tra ten hop thu khong duoc ket thuc bang dau '.'
+	// const regex patternLastDot("\\.$");
+	// //Mau de kiem tra co ky tu @ trong chuoi email nhap vao khong
+	// const regex patternA("@");
 
+	// do
+	// {
+	// 	try
+	// 	{
+	// 		cout << "EMAIL: ";
+	// 		getline(cin, email);
+
+	// 		if (email == "" || !regex_search(email, patternA))
+	// 		{
+	// 			cout << "\t(!) Nhap email theo dinh dang abc@xyz.def\n";
+	// 			continue;
+	// 		}
+
+	// 		pos = email.find_last_of('@');	   //Tim '@' bat dau tu cuoi chuoi email
+	// 		domain = email.substr(pos + 1);	   //Phan ten mien cua email
+	// 		local_part = email.substr(0, pos); //Phan ten hop thu cua email
+
+	// 		if (regex_match(email, patternMain))
+	// 			return email;
+	// 		else if (!regex_match(domain, patternDomain))
+	// 			throw "\t(!) Ten mien khong hop le\n";
+	// 		else if (regex_search(local_part, patternRightCharLocal))
+	// 			throw "\t(!) Ten hop thu gom cac ky tu (a-z), so (0-9) va dau '.'\n";
+	// 		else if (local_part.length() < 3 || local_part.length() > 30)
+	// 			throw "\t(!) Ten hop thu gom 3 den 30 ky tu\n";
+	// 		else if (regex_search(local_part, patternFirstDot) || regex_search(local_part, patternLastDot))
+	// 			throw "\t(!) Ky tu bat dau va ket thuc ten hop thu phai khac '.'\n";
+	// 	}
+	// 	catch (const char *errorName)
+	// 	{
+	// 		cout << errorName;
+	// 	}
+	// } while (true);
+	string input;
+	bool check;
+	cout << "EMAIL: ";
 	do
 	{
-		try
+		check = true;
+		getline(cin, input);
+		/*alphanumeric or underscore character) or . or + or -, one or more times*/
+		//if (!regex_match(input, regex("[a-zA-Z0-9][a-zA-Z0-9.]{1,28}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,}){1,}")))
+		if (!regex_match(input, regex("^[\\w.+\\-]+@gmail\\.com$")))
+
 		{
-			cout << "EMAIL: ";
-			getline(cin, email);
-
-			if (email == "" || !regex_search(email, patternA))
-			{
-				cout << "\t(!) Nhap email theo dinh dang abc@xyz.def\n";
-				continue;
-			}
-
-			pos = email.find_last_of('@');	   //Tim '@' bat dau tu cuoi chuoi email
-			domain = email.substr(pos + 1);	   //Phan ten mien cua email
-			local_part = email.substr(0, pos); //Phan ten hop thu cua email
-
-			if (regex_match(email, patternMain))
-				return email;
-			else if (!regex_match(domain, patternDomain))
-				throw "\t(!) Ten mien khong hop le\n";
-			else if (regex_search(local_part, patternRightCharLocal))
-				throw "\t(!) Ten hop thu gom cac ky tu (a-z), so (0-9) va dau '.'\n";
-			else if (local_part.length() < 3 || local_part.length() > 30)
-				throw "\t(!) Ten hop thu gom 3 den 30 ky tu\n";
-			else if (regex_search(local_part, patternFirstDot) || regex_search(local_part, patternLastDot))
-				throw "\t(!) Ky tu bat dau va ket thuc ten hop thu phai khac '.'\n";
+			cout << "Re-enter the email with the format abc@gmail.com: ";
+			check = false;
 		}
-		catch (const char *errorName)
-		{
-			cout << errorName;
-		}
-	} while (true);
+	} while (!check);
+	return input;
 }
 
 string personalKeyInput()
