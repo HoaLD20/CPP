@@ -114,8 +114,10 @@ int main(int argc, char **argv)
 	else
 	{
 	}
-	readDataFromFile(); //doc file setting.txt
-	menu();
+
+	downloadTimeZone();
+	// readDataFromFile(); //doc file setting.txt
+	// menu();
 	return 0;
 }
 
@@ -703,8 +705,6 @@ void downloadTimeZone()
 			cout << "	Timezone: " << timezoneList[selection - 1].getNumber() << endl;
 			//gan Timezone vao timezoneT de hien Timezone o chuc nang General Setting
 			timezoneT = timezoneList[selection - 1].getNumber();
-
-			
 		}
 	}
 	catch (const std::exception &e)
@@ -1174,16 +1174,20 @@ bool comparatorGeneralName(General *general1, General *general2)
 /*
 * Function sort danh sach Timezone bang UTC
 */
-// bool comparatorTimezone(CommonInfo c1, CommonInfo c2)
-// {
-// 	c1.getNumber().replace(3, 1, ",");					  //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
-// 	c2.getNumber().replace(3, 1, ",");					  //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
-// 	return (stoi(c1.getNumber()) < stoi(c2.getNumber())); //so sanh theo so
-// }
 bool comparatorTimezone(CommonInfo c1, CommonInfo c2)
 {
-	return (c1.getNumber() > c2.getNumber());
+	c1.getNumber().replace(7, 1, ","); //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
+	c2.getNumber().replace(7, 1, ",");
+
+	cout << c1.getNumber().replace(7, 1, ","); //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
+	cout << c2.getNumber().replace(7, 1, ",");
+	//replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
+	return (stoi(c1.getNumber().replace(7, 1, ",")) < stoi(c2.getNumber().replace(7, 1, ","))); //so sanh theo so
 }
+// bool comparatorTimezone(CommonInfo c1, CommonInfo c2)
+// {
+// 	return (c1.getNumber() > c2.getNumber());
+// }
 
 /*
 * Function sort danh sach Language bang alphabet

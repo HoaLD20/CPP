@@ -26,15 +26,27 @@ string validCarName()
 int validInput(string name)
 {
 	string input;
+	bool check = true;
 	do
 	{
+		check = true;
 		getline(cin, input); //lay chuoi de dem regex với \\d+
 		//nhap so nguyen tu 1-9
 		if (!regex_match(input, regex("\\d+")))
 		{
+			check = false;
 			cout << name << " must be a interger. Re-enter: ";
 		}
-	} while (!regex_match(input, regex("\\d+")));
+		if (check)
+		{
+			if (input.length() > 6)
+			{
+				check = false;
+				cout << name << " must be <= 999.999 Re-enter: ";
+			}
+		}
+
+	} while (!check);
 	return stoi(input);
 }
 
@@ -50,19 +62,36 @@ int validInput()
 		{
 			cout << "Please enter your choice from 1-3. Re-enter: ";
 		}
+		
 	} while (!regex_match(input, regex("[1-3]{1}")));
 	return stoi(input);
 }
 //check valid email
 string validEmail()
 {
+	// string input;
+	// bool check;
+	// do
+	// {
+	// 	check = true;
+	// 	getline(cin, input);
+	// 	if (!regex_match(input, regex("[a-zA-Z0-9]+([.-_][a-zA-Z0-9]+)*@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,}){1,}")))
+	// 	{
+	// 		cout << "Re-enter the email with the format abc@gmail.com: ";
+	// 		check = false;
+	// 	}
+	// } while (!check);
+	// return input;
 	string input;
 	bool check;
 	do
 	{
 		check = true;
 		getline(cin, input);
-		if (!regex_match(input, regex("[a-zA-Z0-9]+([.-_][a-zA-Z0-9]+)*@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,}){1,}")))
+		/*alphanumeric or underscore character) or . or + or -, one or more times*/
+		//if (!regex_match(input, regex("[a-zA-Z0-9][a-zA-Z0-9.]{1,28}[a-zA-Z0-9]@[a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9](\\.[a-z0-9]{2,}){1,}")))
+		if (!regex_match(input, regex("^[\\w.+\\-]+@gmail\\.com$")))
+
 		{
 			cout << "Re-enter the email with the format abc@gmail.com: ";
 			check = false;

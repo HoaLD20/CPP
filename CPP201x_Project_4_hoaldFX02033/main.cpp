@@ -64,6 +64,45 @@ bool comparatorLanguage(CommonInfo c1, CommonInfo c2);
 int main(int argc, char **argv)
 {
 	printf("\033c");
+	int length_lang;
+	int length_time;
+	ifstream filestr;
+
+	filestr.open("languages.txt", std::ios::in | std::ios::out | std::ios::app); // open your file
+	filestr.seekg(0, ios::end);													 // put the "cursor" at the end of the file
+	length_lang = filestr.tellg();												 // find the position of the cursor
+	filestr.close();
+
+	filestr.open("timezones.txt", std::ios::in | std::ios::out | std::ios::app); // close your file
+	filestr.seekg(0, ios::end);													 // put the "cursor" at the end of the file
+	length_time = filestr.tellg();												 // find the position of the cursor
+	filestr.close();
+
+	if (length_lang == 0)
+	{
+		fstream f;
+		f.open("languages.txt", std::ios::in | std::ios::out | std::ios::app);
+
+		string data = "1 / Mandarin (entire branch)\n2 /Spanish\n3 / English\n4 / Hindi\n5 / Arabic\n6 / Portuguese\n7 / Bengali\n8 / Russian\n9 / Japanese\n10 / Punjabi\n11 / German\n12 / Javanese\n13 / Wu(inc.Shanghainese)\n14 / Malay(inc.Indonesian and Malaysian)\n15 / Telugu\n16 / Vietnamese\n17 / Korean\n18 / French\n19 / Marathi\n20 / Tamil\n21 / Urdu\n22 / Turkish\n23 / Italian\n24 / Yue(inc.Cantonese)\n25 / Thai\n26 / Gujarati\n27 / Jin\n28 / Southern Min\n29 / Persian\n30 / Polish\n ";
+						  f
+					  << data;
+		f.close();
+	}
+	else
+	{
+	}
+	if (length_time == 0)
+	{
+		fstream f;
+		f.open("timezones.txt", std::ios::in | std::ios::out | std::ios::app);
+
+		string data = "(GMT-12:00) /  International Date Line West\n(GMT-11:00) /  Midway Island, Samoa\n(GMT-10:00) /  Hawaii\n(GMT-09:00) /  Alaska\n(GMT-08:00) /  Tijuana, Baja California\n(GMT-07:00) /  Chihuahua, La Paz, Mazatlan - New\n(GMT-06:00) /  Guadalajara, Mexico City, Monterrey - New\n(GMT-05:00) /  Eastern Time (US and Canada)\n(GMT-04:00) /  Atlantic Time (Canada)\n(GMT-03:30) /  Newfoundland\n(GMT-02:00) /  Mid-Atlantic\n(GMT-01:00) /  Azores\n(GMT-00:00) /  Monrovia, Reykjavik\n(GMT+01:00) /  Belgrade, Bratislava, Budapest, Ljubljana, Prague\n(GMT+02:00) /  Minsk\n(GMT+03:00) /  Moscow, St. Petersburg, Volgograd\n(GMT+04:00) /  Abu Dhabi, Muscat\n(GMT+04:30) /  Kabul\n(GMT+05:00) /  Tashkent\n(GMT+05:30) /  Chennai, Kolkata, Mumbai, New Delhi\n(GMT+05:45) /  Kathmandu\n(GMT+06:00) /  Astana, Dhaka\n(GMT+06:30) /  Yangon (Rangoon)\n(GMT+07:00) /  Bangkok, Hanoi, Jakarta\n(GMT+08:00) /  Beijing, Chongqing, Hong Kong, Urumqi\n(GMT+08:00) /  Irkutsk, Ulaanbaatar\n(GMT+09:00) /  Seoul\n(GMT+09:30) /  Adelaide\n(GMT+10:00) /  Canberra, Melbourne, Sydney\n(GMT+11:00) /  Magadan, Solomon Islands, New Caledonia\n(GMT+12:00) /  Fiji, Kamchatka, Marshall Is.\n(GMT+13:00) /  Nuku'alofa\n";
+		f << data;
+		f.close();
+	}
+	else
+	{
+	}
 	readDataFromFile(); //doc file setting.txt
 	menu();
 	return 0;
@@ -703,7 +742,7 @@ void downloadTimeZone()
 			{
 				lineNumber++;
 				cout << "  " << lineNumber << ": "
-					 << "(GMT" << item.getNumber() + ")" + item.getName() << "\n"; //in data trong file ra man hinh
+					<< item.getNumber() + item.getName() << "\n"; //in data trong file ra man hinh
 			}
 
 			//nhap lua chon cho Timezone
@@ -1046,8 +1085,18 @@ bool comparatorGeneralName(General *general1, General *general2)
 */
 bool comparatorTimezone(CommonInfo c1, CommonInfo c2)
 {
-	c1.getNumber().replace(3, 1, ",");					  //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
-	c2.getNumber().replace(3, 1, ",");					  //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
+	//c1.getNumber().replace(3, 1, ","); //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
+	//c2.getNumber().replace(3, 1, ","); //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
+
+	c1.setNumber(c1.getNumber().erase(0, 4));
+	c1.setNumber(c1.getNumber().erase(c1.getNumber().length() - 1, c1.getNumber().length()));
+	c1.setNumber(c1.getNumber().replace(3, 1, ","));
+
+	c2.setNumber(c2.getNumber().erase(0, 4));
+	c2.setNumber(c2.getNumber().erase(c1.getNumber().length() - 1, c1.getNumber().length()));
+	c2.setNumber(c2.getNumber().replace(3, 1, ","));
+
+	//cout << c1.getNumber() << endl;
 	return (stoi(c1.getNumber()) < stoi(c2.getNumber())); //so sanh theo so
 }
 

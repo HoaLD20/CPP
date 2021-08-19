@@ -1,0 +1,32 @@
+(GMT-12:00) /  International Date Line West\n
+(GMT-11:00) /  Midway Island, Samoa\n
+(GMT-10:00) /  Hawaii\n
+(GMT-09:00) /  Alaska\n
+(GMT-08:00) /  Tijuana, Baja California\n
+(GMT-07:00) /  Chihuahua, La Paz, Mazatlan - New\n
+(GMT-06:00) /  Guadalajara, Mexico City, Monterrey - New\n
+(GMT-05:00) /  Eastern Time (US and Canada)\n
+(GMT-04:00) /  Atlantic Time (Canada)\n
+(GMT-03:30) /  Newfoundland\n
+(GMT-02:00) /  Mid-Atlantic\n
+(GMT-01:00) /  Azores\n
+(GMT-00:00) /  Monrovia, Reykjavik\n
+(GMT+01:00) /  Belgrade, Bratislava, Budapest, Ljubljana, Prague\n
+(GMT+02:00) /  Minsk\n
+(GMT+03:00) /  Moscow, St. Petersburg, Volgograd\n
+(GMT+04:00) /  Abu Dhabi, Muscat\n
+(GMT+04:30) /  Kabul\n
+(GMT+05:00) /  Tashkent\n
+(GMT+05:30) /  Chennai, Kolkata, Mumbai, New Delhi\n
+(GMT+05:45) /  Kathmandu\n
+(GMT+06:00) /  Astana, Dhaka\n
+(GMT+06:30) /  Yangon (Rangoon)\n
+(GMT+07:00) /  Bangkok, Hanoi, Jakarta\n
+(GMT+08:00) /  Beijing, Chongqing, Hong Kong, Urumqi\n
+(GMT+08:00) /  Irkutsk, Ulaanbaatar\n
+(GMT+09:00) /  Seoul\n
+(GMT+09:30) /  Adelaide\n
+(GMT+10:00) /  Canberra, Melbourne, Sydney\n
+(GMT+11:00) /  Magadan, Solomon Islands, New Caledonia\n
+(GMT+12:00) /  Fiji, Kamchatka, Marshall Is.\n
+(GMT+13:00) /  Nuku'alofa\n
