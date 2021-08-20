@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/Quiz_Funix5.dir/quiz_4_7.cpp.o -o Quiz_Funix5 

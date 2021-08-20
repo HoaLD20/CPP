@@ -1,3 +1,10 @@
+Khái niệm:
+	Iterator là một con trỏ được sử dụng để đại diện cho một phần tử nào đó.
+	map<int, string>::iterator it;
+    vector<int>::iterator it; 
+    Mỗi container class trong STL (ngoại trừ các container đặc biệt như std::stack và std::queue) 
+    đều chứa định nghĩa của một iterator bên trong.
+
 Thư viện chuẩn C++
 Vector
 	push_back: them cuoi

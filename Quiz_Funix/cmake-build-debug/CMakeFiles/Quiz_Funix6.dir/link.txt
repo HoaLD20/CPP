@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/Quiz_Funix6.dir/print_1.cpp.o -o Quiz_Funix6 

@@ -1,1 +1,0 @@
-/usr/bin/c++ -g CMakeFiles/quiz_5_7.dir/quiz_5_7.cpp.o -o quiz_5_7 
