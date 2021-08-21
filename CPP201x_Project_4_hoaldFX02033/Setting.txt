@@ -3,7 +3,7 @@ Setting_hoa,hoa@gmail.com,12121212,12,12/Display_1,1,1/Sound_0,0,0,0/General_+07
 Setting_1111,1111@gmail.com,12312312,12,12/Display_0,0,0/Sound_0,0,0,0/General_(GMT+13:00) , Arabic/
 Setting_hoa,hoa@gmail.com,20202020,2,2/Display_0,0,0/Sound_0,0,0,0/General_(GMT+01:00) ,Spanish/
 Setting_hoadis,hoa@gmail.com,22222222,2,2/Display_2,2,2/Sound_0,0,0,0/General_+07:00, Vietnamese/
-Setting_123456,546312@gmail.com,45678945,451,12/Display_11111,1111,11/Sound_0,0,0,0/General_+07:00, Vietnamese/
+Setting_hoa,hoa@gmail.com,45678945,45,45/Display_10,10,10/Sound_0,0,0,0/General_+07:00, Vietnamese/
 Setting_hoa,hoa@gmail.com,55555555,2,2/Display_0,0,0/Sound_0,0,0,0/General_(GMT-12:00) ,Spanish/
 Setting_hoagen2,hoa@gmail.com,56565656,5,5/Display_0,0,0/Sound_0,0,0,0/General_(GMT-11:00) ,Spanish/
 Setting_hoa,hoa@gmail.com,66666666,6,6/Display_0,0,0/Sound_0,0,0,0/General_(GMT-10:00) ,Spanish/
