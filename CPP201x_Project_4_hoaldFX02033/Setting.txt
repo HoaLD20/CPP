@@ -1,4 +1,4 @@
-Setting_hoa1,hoa@gg.gg,11111111,20,20/Display_23,33,333/Sound_0,0,0,0/General_+07:00, Vietnamese/
+Setting_abc,abc@gmail.com,11111111,456,456/Display_23,33,333/Sound_0,0,0,0/General_(GMT+13:00) , Yue(inc.Cantonese)/
 Setting_hoa,hoa@gmail.com,12121212,12,12/Display_1,1,1/Sound_0,0,0,0/General_+07:00, Vietnamese/
 Setting_1111,1111@gmail.com,12312312,12,12/Display_0,0,0/Sound_0,0,0,0/General_(GMT+13:00) , Arabic/
 Setting_hoa,hoa@gmail.com,20202020,2,2/Display_0,0,0/Sound_0,0,0,0/General_(GMT+01:00) ,Spanish/

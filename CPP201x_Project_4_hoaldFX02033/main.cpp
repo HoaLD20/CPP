@@ -1087,7 +1087,7 @@ bool comparatorTimezone(CommonInfo c1, CommonInfo c2)
 {
 	//c1.getNumber().replace(3, 1, ","); //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
 	//c2.getNumber().replace(3, 1, ","); //replace vị tri thu 3 trong chuoi +13:00 de thay dau : thanh dau ,
-
+	// GMT()
 	c1.setNumber(c1.getNumber().erase(0, 4));
 	c1.setNumber(c1.getNumber().erase(c1.getNumber().length() - 1, c1.getNumber().length()));
 	c1.setNumber(c1.getNumber().replace(3, 1, ","));
