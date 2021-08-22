@@ -33,7 +33,39 @@ List
 	position++;
 	a.erase(position): xoa vi tri
 Set
+	Mặc định của set là các phần tử sẽ tăng dần
+	unique element end elements are keys
+	set thực hiện giống cây tìm kiếm nhị phân 
+	size : trả về kích thước hiện tại của set. 
+	empty : true nếu set rỗng, và ngược lại. 
+	insert : Chèn phần tử vào set. 
+	erase : xóa phần tử, có 2 kiểu xóa: xóa theo iterator, hoặc là xóa theo khóa. 
+	clear : xóa tất cả set. 
+	swap : đổi 2 set cho nhau. 
+	empty() - boolean
+	begin \
+		   | trả về con trỏ của phần tử 
+	end   /
+
+	Truy cập phần tử:
+
+	find : trả về itarator trỏ đến phần tử cần tìm kiếm. 
+		Nếu không tìm thấy itarator trỏ về “end” của set. 
+	lower_bound : trả về iterator đến vị trí phần tử bé nhất mà 
+		không bé hơn (lớn hơn hoặc bằng) khóa (dĩ nhiên là theo phép so sánh), nếu không tìm thấy trả về vị trí “end” của set. 
+	upper_bound: trả về iterator đến vị trí phần tử bé nhất mà lớn hơn khóa,
+	 	nếu không tìm thấy trả về vị trí “end” của set.
+	count : trả về số lần xuất hiện của khóa trong container. Nhưng trong set,
+		 các phần tử chỉ xuất hiện một lần, nên hàm này có ý nghĩa là sẽ return 1 nếu khóa có trong container, và 0 nếu không có.
+
+	Để duyệt vector theo chiều nghịch (từ phải qua trái) ta làm như sau:
+		for (vector<int>::reverse_iterator it = a.rbegin(); it != a.rend(); it++)
+	advance: lay phan tu bat ki thong qua itarator
 Stack
 Queue
 Map
 bitset
+
+
+Tree
+	chiều cao của cây con bên trái - chiều cao của cây con bên phải*
