@@ -199,7 +199,7 @@ int main()
 
 #pragma endregion
 
-		// 		//lab6
+		//lab6
 
 #pragma region Lab_6
 	int a[] = {12, 23, 56, 76, 43, 56, 21, 78, 80, 56};
