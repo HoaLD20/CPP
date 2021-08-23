@@ -1,0 +1,45 @@
+/*
+login -
+    nhap ma so - 8 so -> luu vao mang
+    bb sort -> ma so ca nhan nhap vao
+    dung selection sort de sort default ma code
+    ==> so sanh 2 mang sau khi sap xep
+-> nhap sai ->stop - good bye
+-> nhap dung -> press any key to continue
+
+thiet lap 3 van toc an toan -
+    < level 1 -> 20m
+    {level 1, level 2} -> 55m
+    {level 2, level 3} -> 70m
+    > level 3 -> 100m
+
+nhap vao 3 so bat ki -> sort theo thu tu tang dan
+
+Chuc nang ---
+
+speed == 0 -> cho phep chuyen sang N/P , thong bao nguoi dung 
+    su dung thang tay
+speed >= 1 -> ko the chuyen sang N/P
+
+----
+
+Mac dinh khi chuyen sang R/D van toc la 7
+khi tang toc - tang 5 moi lan - giam 5 moi lan
+khi thang - 0
+
+speed > 60 khi D va > 20 khi R, ===> canh bao nguoi dung
+
+/* because the user has not been able to use the accelerator pedal
+ yet while on the brake pedal travel, the minimum speed is required 
+ for the vehicle to move*/
+/*
+
+khi chuyen giua R va D la 0
+khi speed = 0 - chuyen tu R sang D van toc la 7
+
+
+
+****
+Nang cao
+So sanh 2 giai thuat - cai nao nhanh hon - do phuc tap
+*/
