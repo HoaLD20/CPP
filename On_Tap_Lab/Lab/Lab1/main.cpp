@@ -17,7 +17,7 @@ void writeFile(string data)
 	ofstream oFile;
 	try
 	{
-		oFile.open("textdata.txt");
+		oFile.open("textdata.txt", std::ios::in | std::ios::out | std::ios::app);
 		if (!oFile)
 		{
 			cout << "Can not open textdata.txt" << endl;
@@ -42,7 +42,7 @@ void readFile()
 	Time now, later;
 	try
 	{
-		iFile.open("textdata.txt"); //open file
+		iFile.open("textdata.txt", std::ios::in | std::ios::out | std::ios::app); //open file
 		if (iFile)
 		{
 			while (!iFile.eof())
@@ -175,47 +175,52 @@ int main()
 
 	//lab4
 
-	//#pragma region Lab_4
-	//	int myints[] = { 12, 23, 56, 76, 43, 56, 21, 78, 80, 56 };
-	//	vector<int> v_myints(myints,myints + (sizeof(myints) / sizeof(myints[0])));
-	//	std::vector<int>::iterator it;
-	//
-	//	int pattern[] = { 56, 21 };
-	//
-	//	for (int i = 0; i < 10; i++) {
-	//
-	//		cout << myints[i] << " ";
-	//
-	//	}
-	//	cout << endl << endl;
-	//	cout << "So lan xuat hien so 56: " << count(myints, myints + 10, 56) << endl << endl;
-	//	it = search(v_myints.begin(), v_myints.end(), pattern, pattern + 2);
-	//	if (it != v_myints.end())
-	//		std::cout << "pattern[] = { 56, 21 } found at position " << (it - v_myints.begin()) << '\n';
-	//	else
-	//		std::cout << "pattern[] = { 56, 21 } not found\n";
-	//
-	//#pragma endregion
+#pragma region Lab_4
+	int myints[] = {12, 23, 56, 76, 43, 56, 21, 78, 80, 56};
+	vector<int> v_myints(myints, myints + (sizeof(myints) / sizeof(myints[0])));
+	std::vector<int>::iterator it;
 
-	//lab6
+	int pattern[] = {56, 21};
 
-	//#pragma region Lab_6
-	//	int a[] = { 12, 23, 56, 76, 43, 56, 21, 78, 80, 56 };
-	//	int x;
-	//
-	//	cout << "Enter the value to find: ";
-	//	cin >> x;
-	//
-	//	//int i = LinearExhaustive(a, 10, x);
-	//	 int i = LinearSentinel(a, 10, x);
-	//	// int i = BinarySearch(a, 10, x);
-	//
-	//	if (i == -1) {
-	//		cout << "Not found " << x << " in array A\n";
-	//	} else {
-	//		cout << "Position " << x << " in array is: " << i + 1 << "\n";
-	//	}
-	//#pragma endregion
+	for (int i = 0; i < 10; i++)
+	{
+
+		cout << myints[i] << " ";
+	}
+	cout << endl
+		 << endl;
+	cout << "So lan xuat hien so 56: " << count(myints, myints + 10, 56) << endl
+		 << endl;
+	it = search(v_myints.begin(), v_myints.end(), pattern, pattern + 2);
+	if (it != v_myints.end())
+		std::cout << "pattern[] = { 56, 21 } found at position " << (it - v_myints.begin()) << '\n';
+	else
+		std::cout << "pattern[] = { 56, 21 } not found\n";
+
+#pragma endregion
+
+		// 		//lab6
+
+#pragma region Lab_6
+	int a[] = {12, 23, 56, 76, 43, 56, 21, 78, 80, 56};
+	int x;
+
+	cout << "Enter the value to find: ";
+	cin >> x;
+
+	//int i = LinearExhaustive(a, 10, x);
+	int i = LinearSentinel(a, 10, x);
+	// int i = BinarySearch(a, 10, x);
+
+	if (i == -1)
+	{
+		cout << "Not found " << x << " in array A\n";
+	}
+	else
+	{
+		cout << "Position " << x << " in array is: " << i + 1 << "\n";
+	}
+#pragma endregion
 
 	return 0;
 }
