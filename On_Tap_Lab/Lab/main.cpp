@@ -192,6 +192,7 @@ int main()
 	cout << "So lan xuat hien so 56: " << count(myints, myints + 10, 56) << endl
 		 << endl;
 	it = search(v_myints.begin(), v_myints.end(), pattern, pattern + 2);
+	cout << pattern;
 	if (it != v_myints.end())
 		std::cout << "pattern[] = { 56, 21 } found at position " << (it - v_myints.begin()) << '\n';
 	else

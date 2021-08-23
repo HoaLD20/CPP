@@ -29,8 +29,10 @@ List
 	a.reverse(): dao nguoc danh sach
 	size: kich thuoc danh sach
 	a.remove(element): xoa pha tu
+
 	list<int>::iterator position = myList.begin();
 	position++;
+	
 	a.erase(position): xoa vi tri
 Set
 	Mặc định của set là các phần tử sẽ tăng dần
@@ -62,10 +64,32 @@ Set
 		for (vector<int>::reverse_iterator it = a.rbegin(); it != a.rend(); it++)
 	advance: lay phan tu bat ki thong qua itarator
 Stack
+	LIFO
 Queue
+	FIFO
 Map
+	Map là một loại associative container
+	Mỗi phần tử của map là sự kết hợp của khóa (key value) và ánh xạ của nó (mapped value)
+	Cũng giống như set, trong map không chứa các khóa mang giá trị giống nhau.
+	insert
+	erase
+	clear
+	swap
 bitset
+	size(): trả về kích thước của bitset.
+	count(): Đếm các bit 1 (hoặc rả về tổng tất cả các bit).
+	test(): trả về giá trị true hoặc false tại một bit.
+	any(): kiểm tra có bit 1 trong setbit hay không, trả về true nếu có và ngược lại.
+	none(): kiểm tra một bitset có phải toàn bit 0 hay không, trả về true nếu có và ngược lại.
+	all(): kiểm tra một bitset có phải toàn bit 1 hay không, trả về true nếu có và ngược lại.
 
+	Thao tác:
+	set(): Chuyển bit tại ví trí chỉ định thành bit mong muốn, mặc định chuyển thành bit 1
+	reset(): Chuyển bit chỉ định hoặc tất cả các bit thành bit 0
+	flip(): Chuyển bit chỉ định hoặc tất cả các bit thành bit khác ( bit 0 thành bit 1 và ngược lại.
+	to_string(): Chuyển bitset về dạng chuỗi nhị phân.
+	to_ulong(): Chuyển bitset về dạng số nguyên.
+	to_ullong(): Tương tự to_ulong() (Chỉ hỗ trợ cho C++ 11).
 
 Tree
 	chiều cao của cây con bên trái - chiều cao của cây con bên phải*
