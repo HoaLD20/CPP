@@ -1,0 +1,40 @@
+check codelearn
+check code tự viết trong lab 1, 4, 6
+chỉ hỏi và trả lời, ko cần code
+mentor mở từng lab lên hỏi: 
+	Lab 1
+		Mô tả code đã viết trong lab 1(ghi, đọc file có try catch)
+		1 try có thể có bao nhiêu catch
+		1 catch có thể có bao nhiêu try
+		công dụng của throw
+	Lab 2
+		Kể tên các cấu trúc lưu trữ dạng tuần tự
+		khác nhau giữa vector vs list
+		cách truy cập phần tử trong list, vector
+	Lab 3
+		Kể tên các cấu trúc lưu trữ dạng liên kết
+		so sánh giống vs khác  giữa cấu trúc lưu trữ dạng liên kết và tuần tự
+		các value trong map có thể giống nhau ko, giải thích
+		các key trong map có thể giống nhau ko, giải thích
+		từ 1 value có thể lấy dc key ko, giải thích
+		với 2 phần tử có key khác nhau nhưng value giống nhau, thì khi có value ta có thể lấy dc cả hai key hay là lấy chỉ dc key đầu tiên nó gặp, giải thích
+	Lab 4****
+		Mô tả code đã viết
+		Mô tả hàm count vs search trong code đã viết
+	Lab 5 
+		Mô tả linked list
+		có bao nhiêu loại linked list, kể ra
+		mo tả double linked list
+	Lab 6 ***
+		Mô tả cách chạy 3 hàm search có trong code(mentor vô check code)
+		nếu có 10000 phần tử thì làm thế nào để tìm dc 1 phần tử cần tìm nhanh nhất
+	Lab 7
+		Kể tên 1 số phương pháp sắp xếp
+		Mô tả bubble sort, ko cần code
+	Lab 8 
+		Mô tả cấu trúc và đặc điểm binary tree
+		liệt kê các hình thức duyệt cây
+		mentor cho vd rồi duyệt cây theo yêu cầu
+	Lab 9
+		liệt kê 1 số hàm có trong thư viện string
+
